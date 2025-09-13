@@ -11,12 +11,15 @@
 /* Show dropdown menu when .show is applied */
 .nav-item.dropdown > .dropdown-menu.mega-menu.show {
   display: flex !important;
-  justify-content: center;
+  justify-content: flex-start !important;
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateY(0) !important;
   background: #fff !important;
   z-index: 5000 !important;
+  align-items: center !important;
+  width: fit-content !important;
+  padding: 3rem !important;
 }
 
 /* Mega menu styling */

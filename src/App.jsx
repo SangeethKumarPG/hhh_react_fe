@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import Home from "./components/Home";
 import SignupPage from "./pages/SignupPage";
+import "animate.css";
 
 // import Shop from "./pages/Shop";
 
