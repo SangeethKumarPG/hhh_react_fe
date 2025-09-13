@@ -40,15 +40,12 @@ const Hero = () => {
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
-                  <h3 className="hero-text animate-slide-in">{slide.smallText}</h3>
-                  <h1 className="hero-text animate-slide-in">{slide.title}</h1>
-                  <h4 className="mb-4 hero-text animate-slide-in">{slide.subtitle}</h4>
+                  <h3 className="hero-text animate-slide-in" style={{fontSize: "24px"}} >{slide.smallText}</h3>
+                  <h1 className="hero-text animate-slide-in" style={{fontSize: "44px"}}>{slide.title}</h1>
+                  <h4 className="mb-4 hero-text animate-slide-in" style={{fontSize: "16px"}}>{slide.subtitle}</h4>
                   <p className="mb-4 hero-text animate-slide-in">{slide.description}</p>
                   <Link to={slide.primaryBtn.link} className="btn btn-primary me-2 hero-text animate-slide-in">
                     {slide.primaryBtn.text}
-                  </Link>
-                  <Link to={slide.secondaryBtn.link} className="btn btn-outline-dark hero-text animate-slide-in">
-                    {slide.secondaryBtn.text}
                   </Link>
                 </div>
                 <div className="col-lg-6 text-center">

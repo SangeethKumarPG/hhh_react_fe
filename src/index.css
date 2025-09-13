@@ -2637,12 +2637,3 @@ label {
 .btn-warning:hover {
   background-color: #ffb81c;
 }
-body {
-  padding-top: 70px; /* adjust based on actual navbar height */
-}
-
-@media (min-width: 992px) {
-  body {
-    padding-top: 80px;
-  }
-}

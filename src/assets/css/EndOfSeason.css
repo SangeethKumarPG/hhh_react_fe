@@ -1,7 +1,7 @@
 .end-season-section {
-  position: static;
+  position: relative !important;
   min-height: 400px;
-  height: 700px;
+  height: auto !important; /* Changed from 700px to auto */
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
@@ -9,6 +9,8 @@
   display: flex;
   align-items: center; /* vertically center content */
   justify-content: center; /* horizontally center content */
+  margin: 0 !important;
+  z-index: 1;
 }
 
 .end-season-section .container {
@@ -18,12 +20,12 @@
 .end-season-section h1 {
   font-size: 3rem;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-  color:white;
+  color: white;
 }
 
 .end-season-section p {
   font-size: 1.2rem;
-  color:white;
+  color: white;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
 }
 

@@ -5,18 +5,23 @@ import ProductCategories from '../components/ProductCategories'
 import EndOfSeason from '../components/EndOfSeason'
 import ProductCollection from '../components/ProductCollection'
 import Footer from '../components/Footer'
-
 import Hero from '../components/Hero'
 
 function HomePage() {
+  const fullWidthStyle = {
+    width: "100%",
+    margin: "0",
+    padding: "0"  // Fixed typo: was 'paddig'
+  };
+
   return (
     <>
-        <Navbar />
-        <Hero />
-        <ProductCategories />
-        <EndOfSeason/>
-        <ProductCollection />
-        <Footer />
+      <Navbar />
+      <Hero style={fullWidthStyle} />
+      <ProductCategories style={fullWidthStyle} />
+      <EndOfSeason style={fullWidthStyle} />
+      <ProductCollection style={fullWidthStyle} />
+      <Footer style={fullWidthStyle} />
     </>
   )
 }

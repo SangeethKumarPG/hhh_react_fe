@@ -1,20 +1,22 @@
-/* src/assets/css/Navbar.css */
-
-/* Remove hover-based display and use .show instead */
+/* Ensure dropdown menu is hidden by default */
 .nav-item.dropdown > .dropdown-menu {
-  display: none;
+  display: none !important;
   margin-top: 0;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 0 !important;
+  visibility: hidden !important;
   transform: translateY(10px);
   transition: all 0.3s ease-in-out;
 }
 
+/* Show dropdown menu when .show is applied */
 .nav-item.dropdown > .dropdown-menu.mega-menu.show {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  display: flex !important;
+  justify-content: center;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  background: #fff !important;
+  z-index: 5000 !important;
 }
 
 /* Mega menu styling */
@@ -22,13 +24,17 @@
   position: absolute !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  width: 90%; /* Adjust width as needed */
+  margin-left: -50px !important; /* Manual adjustment to fine-tune centering */
+  width: 90%;
   max-width: 1200px;
   border-radius: 0;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #fff !important;
   padding: 20px 0;
-  z-index: 1000;
+  z-index: 5000 !important;
+  top: 100% !important;
+  display: flex;
+  justify-content: center;
 }
 
 /* Cart wrapper styling */
@@ -38,17 +44,17 @@
   right: 0;
   width: 350px;
   max-width: 90vw;
-  background: #fff;
+  background: #fff !important;
   padding: 20px;
-  z-index: 9999;
+  z-index: 5000 !important;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
   overflow-y: auto;
   max-height: 80vh;
-  display: none; /* hidden by default */
+  display: none !important;
 }
 
 .cart-wrapper.open {
-  display: block;
+  display: block !important;
 }
 
 .cart-wrapper i.cart-close {
@@ -58,20 +64,31 @@
   right: 10px;
 }
 
+/* Ensure navbar collapse doesn’t clip dropdown */
+.navbar-collapse {
+  overflow: visible !important;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 992px) {
   .mega-menu {
     position: relative !important;
     transform: none !important;
+    margin-left: 0 !important; /* Remove manual adjustment for mobile */
     width: 100% !important;
+    top: 0 !important;
+    z-index: 5000 !important;
+    display: block !important;
   }
 
   .cart-wrapper {
     width: 100%;
     right: 0;
     left: 0;
+    z-index: 5000 !important;
   }
-  #auth-buttons{
+
+  #auth-buttons {
     margin-left: 120px;
   }
 }
