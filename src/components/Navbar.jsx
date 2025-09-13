@@ -116,7 +116,7 @@ const Navbar = () => {
         </div>
 
         <div className="auth-buttons ml-3 d-flex" id="auth-buttons" style={{ marginRight: "80px" }}>
-          <Link to="/login" className="btn btn-outline-dark btn-sm mr-2">Login</Link>
+          <Link to="/login" className="btn btn-outline-dark btn-sm mr-2" style={{padding:"1rem"}}>Login</Link>
           <Link to="/signup" className="btn btn-dark btn-sm">Sign Up</Link>
         </div>
       </div>
