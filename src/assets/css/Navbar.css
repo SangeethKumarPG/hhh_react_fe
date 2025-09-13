@@ -1,0 +1,77 @@
+/* src/assets/css/Navbar.css */
+
+/* Remove hover-based display and use .show instead */
+.nav-item.dropdown > .dropdown-menu {
+  display: none;
+  margin-top: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-item.dropdown > .dropdown-menu.mega-menu.show {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Mega menu styling */
+.mega-menu {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 90%; /* Adjust width as needed */
+  max-width: 1200px;
+  border-radius: 0;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px 0;
+  z-index: 1000;
+}
+
+/* Cart wrapper styling */
+.cart-wrapper {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 350px;
+  max-width: 90vw;
+  background: #fff;
+  padding: 20px;
+  z-index: 9999;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  overflow-y: auto;
+  max-height: 80vh;
+  display: none; /* hidden by default */
+}
+
+.cart-wrapper.open {
+  display: block;
+}
+
+.cart-wrapper i.cart-close {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 992px) {
+  .mega-menu {
+    position: relative !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+
+  .cart-wrapper {
+    width: 100%;
+    right: 0;
+    left: 0;
+  }
+  #auth-buttons{
+    margin-left: 120px;
+  }
+}
