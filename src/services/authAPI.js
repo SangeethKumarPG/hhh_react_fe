@@ -2,7 +2,7 @@
 import { BASE_URL } from "./baseURL";
 import { commonAPI } from "./commonAPI";
 
-// Signup API
+
 export const signupAPI = async (userDetails) => {
   return await commonAPI(
     "POST",
@@ -10,4 +10,8 @@ export const signupAPI = async (userDetails) => {
     userDetails,
     { "Content-Type": "application/json" }
   );
+};
+
+export const loginAPI = async (userDetails) => {
+  return await commonAPI("POST", `${BASE_URL}/login/`, userDetails, "");
 };
