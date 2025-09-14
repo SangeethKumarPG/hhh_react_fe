@@ -1,0 +1,98 @@
+/* Container layout */
+.checkout-container {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  gap: 1rem;
+  padding-top: 150px; /* prevent navbar overlap */
+  padding-bottom: 100px;
+}
+
+/* Left section (forms) */
+.left-section {
+  flex: 1;
+  max-width: 750px;
+  overflow-y: auto;
+  max-height: 100vh;
+  padding-right: 1rem;
+  padding-left: 3rem;
+}
+
+/* Right section (order summary) */
+.right-section {
+  width: 350px;
+  position: sticky;
+  top: 0;
+  height: fit-content;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+/* Forms */
+.form-section {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 2rem;
+}
+
+/* Product image inside cart summary */
+.product-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* Pay now button */
+.btn-pay {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Form checks (checkbox/radio) */
+.form-check {
+  margin-top: 10px;
+}
+
+/* Cart item row */
+.right-section .d-flex {
+  align-items: center;
+}
+
+/* Remove icon inside cart summary */
+.right-section .ti-close {
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.right-section .ti-close:hover {
+  color: #d9534f; /* red hover */
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .checkout-container {
+    flex-direction: column;
+    padding: 1rem;
+    padding-top: 120px;
+  }
+
+  .left-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100%;
+  }
+
+  .right-section {
+    width: 100%;
+    position: relative;
+    margin-top: 2rem;
+  }
+}

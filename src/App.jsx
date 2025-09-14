@@ -8,6 +8,8 @@ import "animate.css";
 import ProductsPage from "./pages/ProductPage";
 import AboutPage from "./pages/AboutPage";
 import ProductDetailsPage from "./pages/productDetailsPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import ContactUs from "./pages/ContactUs";
 
 // import Shop from "./pages/Shop";
 
@@ -22,6 +24,8 @@ function App() {
           <Route path="/products" element={<ProductsPage/>}/>
           <Route path="/about" element={<AboutPage/>}/>
           <Route path="/product/:id" element={<ProductDetailsPage/>}/>
+          <Route path="/checkout" element={<CheckoutPage/>}/>
+          <Route path="/contactus" element={<ContactUs/>}/>
           {/* <Route path="/shop" element={<Shop />} /> */}
           {/* other routes */}
         </Routes>

@@ -143,7 +143,7 @@ const Navbar = () => {
             </Link>
           </li>
 
-          <li className="nav-item">
+          <li className="nav-item d-none">
             <Link className="nav-link" to="/blog">
               Blog
             </Link>

@@ -50,10 +50,10 @@
 }
 
 .product-image {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-bottom: 1px solid #eee;
+  width: 100% !important;
+  height: 260px !important;
+  object-fit: cover !important;
+  border-bottom: 1px solid #eee !important;
 }
 
 /* Product Details */

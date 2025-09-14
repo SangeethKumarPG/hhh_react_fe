@@ -45,7 +45,7 @@ const ProductsPage = () => {
         {/* Product Grid */}
         <div className="product-grid">
           {loading && <p>Loading products...</p>}
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p style={{ color: "red" }}>Kindly refresh the page.</p>}
           {!loading && products.length === 0 && <p>No products found.</p>}
 
           {products.map((product) => (

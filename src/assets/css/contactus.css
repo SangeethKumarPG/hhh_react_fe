@@ -1,0 +1,92 @@
+/* Hero section */
+.herohead {
+  background: url(images/backgrounds/deal.jpg);
+  color: rgba(255, 255, 255, 0);
+  padding: 150px 0 50px;
+  text-align: center;
+  position: relative;
+}
+
+.herohead::after {
+  content: '';
+  background-image: url('pattern.png'); /* Replace with actual image if available */
+  background-size: contain;
+  opacity: 0.2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.herohead h1 {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+}
+
+/* Contact Section */
+.contact_area {
+  padding: 60px 0;
+  padding-top: 150px;
+}
+
+.contact_message h3 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.contact_message ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact_message ul li {
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+.contact_message ul li i {
+  margin-right: 10px;
+  color: #555;
+  width: 20px;
+  text-align: center;
+}
+
+.contact_message a {
+  color: #dc3545;
+  text-decoration: none;
+}
+
+/* Form */
+.form-control {
+  border-radius: 0;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.contact-label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.contact-btn {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: #0b5ed7;
+}
+
+.form-message {
+  margin-top: 10px;
+  font-size: 14px;
+}

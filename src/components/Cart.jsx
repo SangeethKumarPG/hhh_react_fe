@@ -29,7 +29,7 @@ export default function Cart({ isOpen, toggleCart }) {
           {loading ? (
             <p>Loading...</p>
           ) : error ? (
-            <p style={{ color: "red" }}>{error}</p>
+            <p style={{ color: "red" }}>Kindly login again!</p>
           ) : items.length === 0 ? (
             <p>Your cart is empty.</p>
           ) : (
@@ -67,7 +67,7 @@ export default function Cart({ isOpen, toggleCart }) {
               </div>
               <div className="text-center">
                 <Link
-                  to="/checkoutpage"
+                  to="/checkout"
                   className="btn btn-dark btn-mobile rounded-0"
                 >
                   Check Out

@@ -50,7 +50,7 @@ export const removeCartItem = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await removeFromCartAPI(id);
-      if (response.status === 204) return id; // return removed id
+      if (response.status === 204) return id; 
       return thunkAPI.rejectWithValue(response.response?.data || "Failed to remove item");
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -58,6 +58,26 @@ export const removeCartItem = createAsyncThunk(
   }
 );
 
+export const buyNowThunk = createAsyncThunk(
+  "cart/buyNow",
+  async ({ productId, quantity }, { rejectWithValue }) => {
+    try {
+      const existingCart = await fetchCartAPI();
+      if (existingCart.status === 200 && Array.isArray(existingCart.data)) {
+        for (let item of existingCart.data) {
+          await removeFromCartAPI(item?.id);
+        }
+      }
+
+      const response = await addProductToCartAPI(productId, quantity);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data || "Failed to process buy now"
+      );
+    }
+  }
+);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -121,6 +141,18 @@ const cartSlice = createSlice({
         }
       })
       .addCase(addToCartThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+      builder.addCase(buyNowThunk.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(buyNowThunk.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = [action.payload]; 
+      })
+      .addCase(buyNowThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

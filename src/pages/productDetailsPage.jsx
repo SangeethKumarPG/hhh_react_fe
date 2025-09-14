@@ -8,7 +8,8 @@ import {
 import "../assets/css/productDetailsPage.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { addToCartThunk } from "../redux/cartSlice";
+import { addToCartThunk, buyNowThunk } from "../redux/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const ProductDetailsPage = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const ProductDetailsPage = () => {
     (state) => state.productDetails
   );
   const [selectedMedia, setSelectedMedia] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetchProductDetails(id));
     dispatch(fetchProductMedia(id));
@@ -28,6 +29,17 @@ const ProductDetailsPage = () => {
       setSelectedMedia(media[0]);
     }
   }, [media]);
+      const handleBuyNow = (productId) => {
+      dispatch(buyNowThunk({ productId, quantity: 1 }))
+        .unwrap()
+        .then(() => {
+          navigate("/checkout");
+        })
+        .catch((err) => {
+          console.error("Buy Now failed:", err);
+          alert("Failed to process buy now. Please try again.");
+        });
+    };
 
   if (loading) return <p>Loading product...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
@@ -89,7 +101,7 @@ const ProductDetailsPage = () => {
           </div>
 
           <div className="action-buttons">
-            <button className="buy-now">Buy it now</button>
+            <button className="buy-now" onClick={()=>handleBuyNow(product.id)}>Buy it now</button>
             <button className="wishlist-btn">❤️</button>
             <button className="add-to-cart" onClick={()=>handleAddToCart(product.id)}>🛒</button>
           </div>
