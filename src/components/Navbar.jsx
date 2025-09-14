@@ -52,9 +52,12 @@ const Navbar = () => {
           <li className="nav-item">
             <Link className="nav-link" to="/">Home</Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/products">Products</Link>
+          </li>
           <li className="nav-item dropdown mega-dropdown">
             <button className="nav-link btn-dropdown" onClick={toggleMega} type="button">
-              Product
+              Categories
             </button>
             <div className={`dropdown-menu mega-menu ${megaOpen ? "show" : ""}`}>
               <div className="row">

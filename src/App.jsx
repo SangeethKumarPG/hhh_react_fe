@@ -5,6 +5,8 @@ import LoginPage from "./pages/LoginPage";
 import Home from "./components/Home";
 import SignupPage from "./pages/SignupPage";
 import "animate.css";
+import ProductsPage from "./pages/ProductPage";
+import AboutPage from "./pages/AboutPage";
 
 // import Shop from "./pages/Shop";
 
@@ -16,6 +18,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage/>}/>
           <Route path="/signup" element={<SignupPage/>}/>
+          <Route path="/products" element={<ProductsPage/>}/>
+          <Route path="/about" element={<AboutPage/>}/>
           {/* <Route path="/shop" element={<Shop />} /> */}
           {/* other routes */}
         </Routes>

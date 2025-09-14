@@ -1,0 +1,103 @@
+/* src/assets/css/AboutPage.css */
+
+/* Hero Section */
+/* .herohead {
+  background: 
+  /* linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+    url("../images/about/deal.jpg") center/cover no-repeat;
+  /* color: #fff; 
+  text-align: center;
+  padding: 100px 20px;
+} */
+
+.herohead {
+  background: url("/images/backgrounds/deal.jpg") center/cover no-repeat;
+  color: rgba(255, 255, 255, 0);
+  padding: 200px 0 50px;
+  text-align: center;
+  position: relative;
+}
+
+
+
+@media (max-width: 768px) {
+  .herohead {
+    padding: 220px 0 60px; /* extra top padding for mobile nav */
+  }
+}
+
+
+.herohead h1 {
+  font-size: 48px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+}
+
+.text-orange {
+  color: #ff4135;
+}
+
+/* Check List */
+.check-list .icon-text {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.check-list .icon-text i {
+  color: #ff4135;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* Reviews */
+.review-box {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.review-logo {
+  width: 40px;
+  height: auto;
+}
+
+/* Certifications */
+.certification-logos img {
+  max-height: 70px;
+  margin: 15px 30px;
+  filter: grayscale(20%);
+  transition: all 0.3s ease;
+}
+
+.certification-logos img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* Product Cards in About */
+img.rounded {
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Blockquote */
+blockquote {
+  border-left: 4px solid #ff4135;
+  padding-left: 15px;
+  color: #666;
+  font-size: 15px;
+  font-style: italic;
+}
+
