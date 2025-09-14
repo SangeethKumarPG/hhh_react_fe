@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchCategories } from "../redux/categorySlice";
 import { fetchProducts, fetchProductsByCategory } from "../redux/productSlice";
 import "../assets/css/ProductsPage.css";
@@ -48,9 +49,9 @@ const ProductsPage = () => {
           {!loading && products.length === 0 && <p>No products found.</p>}
 
           {products.map((product) => (
-            <a
+            <Link
               key={product.id}
-              href={`single_product.html?id=${product.id}`}
+              to={`/product/${product.id}`}
               className="product-card-link"
             >
               <div className="product-card">
@@ -60,11 +61,11 @@ const ProductsPage = () => {
                 )}
 
                 <img
-                  src={`${
+                  src={
                     product.image.startsWith("http")
                       ? product.image
                       : "http://127.0.0.1:8000/" + product.image
-                  }`}
+                  }
                   alt={product.name}
                   className="product-image"
                 />
@@ -80,7 +81,7 @@ const ProductsPage = () => {
                   </p>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

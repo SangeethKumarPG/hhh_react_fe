@@ -7,6 +7,7 @@ import SignupPage from "./pages/SignupPage";
 import "animate.css";
 import ProductsPage from "./pages/ProductPage";
 import AboutPage from "./pages/AboutPage";
+import ProductDetailsPage from "./pages/productDetailsPage";
 
 // import Shop from "./pages/Shop";
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/signup" element={<SignupPage/>}/>
           <Route path="/products" element={<ProductsPage/>}/>
           <Route path="/about" element={<AboutPage/>}/>
+          <Route path="/product/:id" element={<ProductDetailsPage/>}/>
           {/* <Route path="/shop" element={<Shop />} /> */}
           {/* other routes */}
         </Routes>
