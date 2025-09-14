@@ -8,6 +8,7 @@ import {
 import "../assets/css/productDetailsPage.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { addToCartThunk } from "../redux/cartSlice";
 
 const ProductDetailsPage = () => {
   const { id } = useParams();
@@ -31,6 +32,10 @@ const ProductDetailsPage = () => {
   if (loading) return <p>Loading product...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
   if (!product) return null;
+
+  const handleAddToCart = (productId)=>{
+    dispatch(addToCartThunk({productId, quantity:1}));
+  };
 
   return (
     <>
@@ -86,7 +91,7 @@ const ProductDetailsPage = () => {
           <div className="action-buttons">
             <button className="buy-now">Buy it now</button>
             <button className="wishlist-btn">❤️</button>
-            <button className="add-to-cart">🛒</button>
+            <button className="add-to-cart" onClick={()=>handleAddToCart(product.id)}>🛒</button>
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import product2 from "../assets/images/collection/product2.png";
 import bottle1 from "../assets/images/categories/bottle.1.png";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/authSlice";
+import Cart from "./Cart";
 
 const Navbar = () => {
   const [cartOpen, setCartOpen] = useState(false);
@@ -33,11 +34,16 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white w-100 sticky" id="navbar">
+    <nav
+      className="navbar navbar-expand-lg navbar-light bg-white w-100 sticky"
+      id="navbar"
+    >
+      {/* Brand Logo */}
       <Link className="navbar-brand order-2 order-lg-1" to="/">
         <img className="img-fluid" src={logo} alt="logo" />
       </Link>
 
+      {/* Mobile Toggle */}
       <button
         className="navbar-toggler"
         type="button"
@@ -47,50 +53,103 @@ const Navbar = () => {
         <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div className={`navbar-collapse order-1 order-lg-2 collapse ${menuOpen ? "show" : ""}`}>
+      {/* Navbar Collapse */}
+      <div
+        className={`navbar-collapse order-1 order-lg-2 collapse ${
+          menuOpen ? "show" : ""
+        }`}
+      >
         <ul className="navbar-nav mx-auto">
           <li className="nav-item">
-            <Link className="nav-link" to="/">Home</Link>
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
           </li>
+
           <li className="nav-item">
-            <Link className="nav-link" to="/products">Products</Link>
+            <Link className="nav-link" to="/products">
+              Products
+            </Link>
           </li>
+
+          {/* Mega Menu */}
           <li className="nav-item dropdown mega-dropdown">
-            <button className="nav-link btn-dropdown" onClick={toggleMega} type="button">
+            <button
+              className="nav-link btn-dropdown"
+              onClick={toggleMega}
+              type="button"
+            >
               Categories
             </button>
-            <div className={`dropdown-menu mega-menu ${megaOpen ? "show" : ""}`}>
+            <div
+              className={`dropdown-menu mega-menu ${megaOpen ? "show" : ""}`}
+            >
               <div className="row">
                 <div className="col-md-4 text-center">
-                  <img src={product1} alt="Car Perfumes" className="img-fluid mb-2" />
+                  <img
+                    src={product1}
+                    alt="Car Perfumes"
+                    className="img-fluid mb-2"
+                  />
                   <h6>Car Perfumes</h6>
-                  <Link className="dropdown-item" to="#">Air Fresheners</Link>
-                  <Link className="dropdown-item" to="#">Fragrance Diffusers</Link>
+                  <Link className="dropdown-item" to="#">
+                    Air Fresheners
+                  </Link>
+                  <Link className="dropdown-item" to="#">
+                    Fragrance Diffusers
+                  </Link>
                 </div>
                 <div className="col-md-4 text-center">
-                  <img src={bottle1} alt="Body Perfumes" className="img-fluid mb-2" />
+                  <img
+                    src={bottle1}
+                    alt="Body Perfumes"
+                    className="img-fluid mb-2"
+                  />
                   <h6>Body Perfumes</h6>
-                  <Link className="dropdown-item" to="#">Air Fresheners</Link>
-                  <Link className="dropdown-item" to="#">Fragrance Diffusers</Link>
+                  <Link className="dropdown-item" to="#">
+                    Air Fresheners
+                  </Link>
+                  <Link className="dropdown-item" to="#">
+                    Fragrance Diffusers
+                  </Link>
                 </div>
                 <div className="col-md-4 text-center">
-                  <img src={product2} alt="Multipurpose" className="img-fluid mb-2" />
+                  <img
+                    src={product2}
+                    alt="Multipurpose"
+                    className="img-fluid mb-2"
+                  />
                   <h6>Multipurpose</h6>
-                  <Link className="dropdown-item" to="#">Air Fresheners</Link>
-                  <Link className="dropdown-item" to="#">Fragrance Diffusers</Link>
+                  <Link className="dropdown-item" to="#">
+                    Air Fresheners
+                  </Link>
+                  <Link className="dropdown-item" to="#">
+                    Fragrance Diffusers
+                  </Link>
                 </div>
               </div>
             </div>
           </li>
+
           <li className="nav-item">
-            <Link className="nav-link" to="/about">About</Link>
+            <Link className="nav-link" to="/about">
+              About
+            </Link>
           </li>
+
           <li className="nav-item">
-            <Link className="nav-link" to="/contactus">Contact Us</Link>
+            <Link className="nav-link" to="/contactus">
+              Contact Us
+            </Link>
           </li>
+
           <li className="nav-item">
-            <Link className="nav-link" to="/blog">Blog</Link>
+            <Link className="nav-link" to="/blog">
+              Blog
+            </Link>
           </li>
+
+          {/* Cart Button */}
           <li className="nav-item">
             <button
               onClick={toggleCart}
@@ -101,10 +160,15 @@ const Navbar = () => {
             </button>
           </li>
         </ul>
+
+        {/* Mobile Auth Buttons */}
         <div className="d-lg-none mt-3 text-end">
           {!isAuthenticated ? (
             <>
-              <Link to="/login" className="btn btn-outline-dark btn-sm me-2 my-0">
+              <Link
+                to="/login"
+                className="btn btn-outline-dark btn-sm me-2 my-0"
+              >
                 Login
               </Link>
               <Link to="/signup" className="btn btn-dark btn-sm my-0">
@@ -112,13 +176,17 @@ const Navbar = () => {
               </Link>
             </>
           ) : (
-            <button onClick={handleLogout} className="btn btn-outline-dark btn-sm my-0">
+            <button
+              onClick={handleLogout}
+              className="btn btn-outline-dark btn-sm my-0"
+            >
               Logout
             </button>
           )}
         </div>
       </div>
 
+      {/* Desktop Auth Buttons */}
       <div className="order-3 navbar-right-elements d-none d-lg-flex align-items-center">
         <div className="auth-buttons ml-3 d-flex" id="auth-buttons">
           {!isAuthenticated ? (
@@ -131,46 +199,18 @@ const Navbar = () => {
               </Link>
             </>
           ) : (
-            <button onClick={handleLogout} className="btn btn-outline-dark btn-sm">
+            <button
+              onClick={handleLogout}
+              className="btn btn-outline-dark btn-sm"
+            >
               Logout
             </button>
           )}
         </div>
       </div>
 
-      {cartOpen && (
-        <div className="cart-wrapper open">
-          <i onClick={toggleCart} className="ti-close cart-close"></i>
-          <h4 className="mb-4">Your Cart</h4>
-          <ul className="pl-0 mb-3">
-            <li className="d-flex border-bottom">
-              <img src={bottle1} width="63" height="85" alt="product-img" />
-              <div className="mx-3">
-                <h6>HHH Extrem</h6>
-                <span>1</span> X <span>$79.00</span>
-              </div>
-              <i className="ti-close"></i>
-            </li>
-            <li className="d-flex border-bottom">
-              <img src={bottle1} width="63" height="85" alt="product-img" />
-              <div className="mx-3">
-                <h6>White Oudh</h6>
-                <span>1 X</span> <span>$79.00</span>
-              </div>
-              <i className="ti-close"></i>
-            </li>
-          </ul>
-          <div className="mb-3">
-            <span>Cart Total</span>
-            <span className="float-right">$178.00</span>
-          </div>
-          <div className="text-center">
-            <Link to="/checkoutpage" className="btn btn-dark btn-mobile rounded-0">
-              Check Out
-            </Link>
-          </div>
-        </div>
-      )}
+      {/* Reusable Cart Component */}
+      <Cart isOpen={cartOpen} toggleCart={toggleCart} />
     </nav>
   );
 };
