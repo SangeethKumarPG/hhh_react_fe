@@ -1,12 +1,15 @@
 
 import axios from "axios";
+import { BASE_URL } from "./baseURL";
 
-const refreshAccessToken = async () => {
+export const refreshAccessToken = async () => {
   const refreshToken = sessionStorage.getItem("refresh_token");
-  if (!refreshToken) throw new Error("No refresh token found");
+  console.log(refreshToken)
+   if (!refreshToken)  console.log("no refreshtoken ")
+  if (!refreshToken)   throw new Error("No refresh token found");
 
-  const response = await axios.post("/auth/token/refresh/", {
-    refresh: refreshToken,
+  const response = await axios.post(`${BASE_URL}/token/refresh/`, {
+    "refresh": refreshToken,
   });
 
   const newAccessToken = response.data.access;

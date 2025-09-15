@@ -1,0 +1,58 @@
+.custom-card {
+  width: 18rem;
+  border-radius: 15px;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.custom-card.active {
+  background: #4abdf3; /* Blue highlight */
+  color: #fff;
+}
+
+.custom-card.active .price-text {
+  color: #fff;
+}
+
+.product-img {
+  max-height: 150px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.custom-select {
+  border-radius: 8px;
+}
+
+.price-text {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.qty-btn {
+  border: none;
+  background: #ddd;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.qty-btn:hover {
+  background: #bbb;
+}
+
+.add-btn {
+  background: #ffc107; /* Yellow */
+  border: none;
+  border-radius: 20px;
+  padding: 6px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-btn:hover {
+  background: #e0a800;
+}

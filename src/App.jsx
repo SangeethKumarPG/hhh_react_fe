@@ -11,7 +11,8 @@ import ProductDetailsPage from "./pages/productDetailsPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ContactUs from "./pages/ContactUs";
 
-// import Shop from "./pages/Shop";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           {/* other routes */}
         </Routes>
       </main>
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
     </div>
   );
 }

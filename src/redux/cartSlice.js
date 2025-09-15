@@ -6,6 +6,7 @@ import {
   removeFromCartAPI,
   addProductToCartAPI
 } from "../services/cartAPI";
+import { toast } from "react-toastify";
 
 
 export const addToCartThunk = createAsyncThunk(
@@ -96,10 +97,12 @@ const cartSlice = createSlice({
       .addCase(fetchCart.fulfilled, (state, action) => {
         state.loading = false;
         state.items = action.payload;
+        // toast.success("Cart fetched successfully");
       })
       .addCase(fetchCart.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        toast.error(action.payload);
       });
 
 
@@ -109,18 +112,22 @@ const cartSlice = createSlice({
         state.items = state.items.map((item) =>
           item.id === updatedItem.id ? updatedItem : item
         );
+        toast.success("Quantity updated successfully");
       })
       .addCase(updateCartQuantity.rejected, (state, action) => {
         state.error = action.payload;
+        toast.error(action.payload);
       });
 
 
     builder
       .addCase(removeCartItem.fulfilled, (state, action) => {
         state.items = state.items.filter((item) => item.id !== action.payload);
+        toast.success("Item removed successfully");
       })
       .addCase(removeCartItem.rejected, (state, action) => {
         state.error = action.payload;
+        toast.error(action.payload);
       });
 
     builder.addCase(addToCartThunk.pending, (state) => {
@@ -139,10 +146,12 @@ const cartSlice = createSlice({
         } else {
           state.items.push(newItem);
         }
+        toast.success("Item added to cart successfully");
       })
       .addCase(addToCartThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        toast.error(action.payload);
       });
       builder.addCase(buyNowThunk.pending, (state) => {
         state.loading = true;
@@ -151,10 +160,12 @@ const cartSlice = createSlice({
       .addCase(buyNowThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.items = [action.payload]; 
+        toast.success("Item added to cart successfully");
       })
       .addCase(buyNowThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        toast.error(action.payload);
       });
   },
 });

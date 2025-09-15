@@ -30,7 +30,7 @@ const EndOfSeason = () => {
             <p className="mb-4">
               Take 10% off on selected fragrances. Discount applied at checkout.
             </p>
-            <a href="/shop" className="btn btn-light w-25">
+            <a href="/products" className="btn btn-light w-25">
               Shop Now
             </a>
           </div>

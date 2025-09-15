@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getProductsAPI, getProductsByCategoryAPI } from "../services/productCategoryAPI";
+import { toast } from "react-toastify";
+
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
@@ -38,10 +40,12 @@ const productSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
         state.items = action.payload;
+        // toast.success("Products fetched successfully");
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        toast.error(action.payload);
       })
       .addCase(fetchProductsByCategory.pending, (state) => {
         state.loading = true;
@@ -50,10 +54,12 @@ const productSlice = createSlice({
       .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
         state.loading = false;
         state.items = action.payload;
+        // toast.success("Products fetched successfully");
       })
       .addCase(fetchProductsByCategory.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        toast.error(action.payload);
       });
   },
 });

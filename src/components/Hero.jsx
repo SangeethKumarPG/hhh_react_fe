@@ -13,7 +13,7 @@ const slides = [
     title: "Elevate Your Drive!",
     subtitle: "Transform every journey into a delightful experience with our premium car perfumes!",
     description: "Say goodbye to unwanted odors and hello to a captivating fragrance that lasts.",
-    primaryBtn: { text: "Shop Now", link: "/shop" },
+    primaryBtn: { text: "Shop Now", link: "/products" },
     secondaryBtn: { text: "Learn More", link: "/about" },
   },
   {
@@ -22,7 +22,7 @@ const slides = [
     title: "High Quality Fragrances",
     subtitle: "Starts from $37.00",
     description: "Your search is over with HHH Car n Perfumes.",
-    primaryBtn: { text: "Shop Now", link: "/shop" },
+    primaryBtn: { text: "Shop Now", link: "/products" },
     secondaryBtn: { text: "Contact Us", link: "/contact" },
   },
 ];

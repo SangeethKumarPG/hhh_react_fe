@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getProductDetailsAPI, getProductMediaAPI } from "../services/productAPI";
+import { toast } from "react-toastify";
 
 
 export const fetchProductDetails = createAsyncThunk(
@@ -56,10 +57,12 @@ const productDetailsSlice = createSlice({
       .addCase(fetchProductDetails.fulfilled, (state, action) => {
         state.loading = false;
         state.product = action.payload;
+        // toast.success("Product details fetched successfully");
       })
       .addCase(fetchProductDetails.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        toast.error(action.payload);
       })
 
       
@@ -70,10 +73,12 @@ const productDetailsSlice = createSlice({
       .addCase(fetchProductMedia.fulfilled, (state, action) => {
         state.loading = false;
         state.media = action.payload;
+        // toast.success("Product media fetched successfully");
       })
       .addCase(fetchProductMedia.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        toast.error(action.payload);
       });
   },
 });
