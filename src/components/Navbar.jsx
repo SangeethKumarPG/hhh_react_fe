@@ -188,7 +188,7 @@ const Navbar = () => {
 
       {/* Desktop Auth Buttons */}
       <div className="order-3 navbar-right-elements d-none d-lg-flex align-items-center">
-        <div className="auth-buttons ml-3 d-flex" id="auth-buttons">
+        <div className="auth-buttons ml-2 d-flex" id="auth-buttons">
           {!isAuthenticated ? (
             <>
               <Link to="/login" className="btn btn-outline-dark btn-sm me-2">

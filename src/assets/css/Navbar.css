@@ -95,3 +95,12 @@
     margin-left: 120px;
   }
 }
+
+#auth-buttons .btn-sm,
+.navbar .btn-sm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  padding: 0.375rem 0.75rem;
+}
