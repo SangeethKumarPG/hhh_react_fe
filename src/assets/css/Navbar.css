@@ -5,7 +5,6 @@
   visibility: hidden !important;
   transform: translateY(10px);
   width: fit-content !important;
-
   transition: all 0.1s ease-in-out;
 }
 
@@ -27,7 +26,7 @@
 /* Mega menu styling */
 .mega-menu {
   position: absolute !important;
-  left: 50% !important;
+  left: -50% !important;
   transform: translateX(-50%) !important;
   margin-left: -50px !important; /* Manual adjustment to fine-tune centering */
   width: 90%;
@@ -41,7 +40,22 @@
   display: flex;
   justify-content: center;
 }
-
+.kkk {
+  position: absolute;
+  left: 30px;
+  width: 100px;
+  /* font-size: 30px;
+  ba
+  /* margin-left: 10px; */
+  /* background-color: antiquewhite; */
+}
+.fff {
+  display: flex;
+  margin: auto;
+  margin-left: 20%;
+  /* z-index: ; */
+  /* background-color: antiquewhite; */
+}
 /* Cart wrapper styling */
 .cart-wrapper {
   position: absolute;
@@ -79,29 +93,45 @@
   .nav-item.dropdown > .dropdown-menu {
     position: absolute;
   }
-
+  .kkk {
+    left: 50%;
+    transform: translate(-50%, 10%);
+    /* margin: auto; */
+    /* background-color: aqua; */
+    top: 0px;
+  }
+  .fff {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-top: 10px;
+    z-index: 5000;
+    /* height: 50px; */
+    background-color: rgb(255, 255, 255);
+  }
   /* Show dropdown menu when .show is applied */
   .nav-item.dropdown > .dropdown-menu.mega-menu.show {
-    /* display: none; */
     position: absolute;
-    background-color: aqua;
+    width: 70vw !important;
+    /* left: 0% !important; */
+    /* transform: translateX(-50%, 0%) !important; */
+    /* background-color: aqua !important; */
   }
 
-  .mega-menu {
-    /* display: none; */
-    /* transition: 1s; */
-    left: 0% !important;
-    /* position: relative !important; */
-    transform: none !important;
-    margin-left: 0 !important; /* Remove manual adjustment for mobile */
+  /* .mega-menu {
+    position: absolute;
+    left: -50% !important;
+    margin-left: 0 !important;
     width: 100% !important;
     top: 20 !important;
     z-index: 5000 !important;
     display: block !important;
-  }
+  } */
 
   .cart-wrapper {
     width: 100%;
+    /* flex-shrink: 0; */
     right: 0;
     left: 0;
     z-index: 5000 !important;
@@ -109,5 +139,10 @@
 
   #auth-buttons {
     margin-left: 120px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .jjj {
+    display: none;
   }
 }

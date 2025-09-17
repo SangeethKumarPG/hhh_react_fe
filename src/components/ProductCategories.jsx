@@ -31,7 +31,10 @@ const ProductCategories = () => {
                     />
                   </Link>
                 </div>
-                <div className="px-4 py-3 border-top d-flex justify-content-between align-items-center">
+                <div
+                  style={{ display: "flex", flexDirection: "column" }}
+                  className="px-4 py-3 border-top justify-content-between align-items-center"
+                >
                   <h4 className="mb-0">{cat.title}</h4>
                   <Link to="/shop" className="btn btn-sm btn-outline-primary">
                     View More

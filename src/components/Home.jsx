@@ -7,11 +7,13 @@ import ProductCollection from "../components/ProductCollection";
 import EndOfSeason from "../components/EndOfSeason";
 import Footer from "../components/Footer";
 import "../assets/css/Home.css";
+import SearchArea from "./SearchArea";
 
 const Home = () => {
   return (
     <>
       <Navbar />
+      {/* <SearchArea /> */}
       <Hero />
       <ProductCategories />
       <ProductCollection />

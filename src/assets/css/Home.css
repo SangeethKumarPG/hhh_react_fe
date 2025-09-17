@@ -191,7 +191,7 @@ main {
   color: white;
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-  background-color: #38dbff;
+  background-color: #63e2ff;
 }
 
 .hover-zoom-img {
@@ -361,6 +361,11 @@ main {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .card_container {
+    gap: 10rem;
+  }
+}
 @media (max-width: 768px) {
   .hero-area {
     margin-top: 80px !important; /* Adjusted for smaller screens */
@@ -397,7 +402,7 @@ main {
   }
 
   .card_container {
-    gap: 1rem;
+    gap: 10rem;
   }
 
   .card {

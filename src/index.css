@@ -693,6 +693,11 @@ a:hover {
   transform: translateY(0);
   visibility: visible;
   opacity: 1;
+  /* margin-top: 20px; */
+  position: absolute;
+  top: 60vh;
+  /* width: 300px; */
+  left: 5%;
 }
 
 .cart-wrapper li {

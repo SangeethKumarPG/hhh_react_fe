@@ -67,8 +67,34 @@ const LoginPage = () => {
           />
 
           <div className="d-flex justify-content-between align-items-center mb-3">
-            <label className="mb-0">
-              <input type="checkbox" className="me-2" /> Remember me?
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0px",
+                justifyContent: "start",
+                position: "relative",
+                paddingLeft: "10px",
+                // backgroundColor: "red",
+                // width: "0px",
+              }}
+              className="mb-0"
+            >
+              <input
+                style={{ marginTop: "5px" }}
+                type="checkbox"
+                className="me-2"
+              />
+              <p
+                style={{
+                  position: "absolute",
+                  width: "130px",
+                  left: "20px",
+                  top: "px",
+                }}
+              >
+                Remember me?
+              </p>
             </label>
             <a href="#">Forgot password?</a>
           </div>

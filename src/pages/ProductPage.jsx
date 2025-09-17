@@ -6,11 +6,16 @@ import { fetchProducts, fetchProductsByCategory } from "../redux/productSlice";
 import "../assets/css/ProductsPage.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SearchArea from "../components/SearchArea";
 
 const ProductsPage = () => {
   const dispatch = useDispatch();
   const { items: categories } = useSelector((state) => state.categories);
-  const { items: products, loading, error } = useSelector((state) => state.products);
+  const {
+    items: products,
+    loading,
+    error,
+  } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -29,9 +34,10 @@ const ProductsPage = () => {
   return (
     <>
       <Navbar />
+      <SearchArea />
       <div className="products-page-container">
         {/* Category Dropdown */}
-        <section className="category-section my-5">
+        <section className="category-section ">
           <select className="category-dropdown" onChange={handleCategoryChange}>
             <option value="">All Categories</option>
             {categories.map((cat) => (
