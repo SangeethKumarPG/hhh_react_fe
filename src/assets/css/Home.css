@@ -173,16 +173,25 @@ main {
   text-align: center;
 }
 
-.card {
+.card2 {
   border: none;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  background-color: white;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: end;
+  position: relative;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
 }
 
-.card:hover {
+.card2:hover {
+  color: white;
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  background-color: #38dbff;
 }
 
 .hover-zoom-img {
@@ -248,32 +257,75 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 6rem;
 }
 
 .card-img-top {
-  height: 250px;
+  height: 320px;
+  position: absolute;
+  top: -140px;
+  right: 0px;
   object-fit: contain;
-  padding: 1rem;
+  transition: 0.5s;
+  /* filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.326))
+    drop-shadow(0px 10px 10px rgb(255, 255, 255)); */
+  /* text-shadow: 0px 0px 20px black; */
+  /* box-shadow: 0px 0px 10px black; */
+  /* background-color: #666; */
+  /* padding: 1rem; */
+  z-index: 1;
 }
-
+.card2:hover .card-img-top {
+  top: -150px;
+  transition: 0.5s;
+  /* filter: drop-shadow(0px 20px 15px rgba(0, 0, 0, 0.438))
+    drop-shadow(0px 10px 15px rgba(255, 255, 255, 0.329)); */
+}
+.card2 .span1 {
+  position: absolute;
+  width: 50px;
+  height: 20px;
+  top: 60px;
+  left: 50%;
+  box-shadow: 0px 20px 30px black;
+  transform: translate(-50%, 100%);
+  background-color: none;
+  z-index: 0;
+}
 .card-body {
-  padding: 1.5rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 1;
+  display: grid;
+  place-items: center;
+  /* bottom: 0px; */
+  /* height: 0px; */
+  padding: 1.5rem 1rem 1rem 1rem;
+  /* background-color: #cb8d8d30; */
 }
 
 .card-title {
   font-size: 1.25rem;
   font-weight: bold;
-  color: #333;
+  /* color: #333; */
   margin-bottom: 1rem;
 }
-
+.card-num1 {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 .card-text {
-  color: #666;
+  text-align: center;
+  /* background-color: #38dbff; */
+  /* color: #666; */
+  color: rgb(0, 0, 0);
   font-size: 0.9rem;
   line-height: 1.5;
 }
-
+.card2:hover .card-text {
+  color: white;
+}
 .form-select {
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -281,12 +333,20 @@ main {
 
 .btn-group {
   display: flex;
-  align-items: center;
+  align-items: end;
+  /* background-color: #38dbff; */
 }
-
+.card2:hover .btn-group .btn {
+  /* background-color: #38dbff; */
+  color: white;
+}
 .btn-group .btn {
   border-radius: 3px;
-  padding: 0.25rem 0.5rem;
+  /* height: 10px; */
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 20px;
+  padding: 0px 0.4rem 0px 0.4rem;
+  color: black;
 }
 
 .btn-outline-secondary {
@@ -306,43 +366,44 @@ main {
     margin-top: 80px !important; /* Adjusted for smaller screens */
     padding: 60px 0 !important;
   }
-  
+
   .hero-title {
     font-size: 32px;
   }
-  
+
   .hero-subtitle {
     font-size: 18px;
   }
-  
+
   .hero-description {
     font-size: 16px;
   }
-  
+
   .section {
     padding: 60px 0 !important;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .end-season-section {
     min-height: 300px;
     padding: 2rem 0;
   }
-  
+
   .end-season-section h1 {
     font-size: 2rem;
   }
-  
+
   .card_container {
     gap: 1rem;
   }
-  
+
   .card {
     width: 100% !important;
     max-width: 350px;
+    /* background-color: #e25a5a; */
   }
 }
 
@@ -350,24 +411,24 @@ main {
   .hero-title {
     font-size: 24px;
   }
-  
+
   .hero-subtitle {
     font-size: 16px;
   }
-  
+
   .hero-btn {
     padding: 8px 20px;
     font-size: 14px;
   }
-  
+
   .section-title {
     font-size: 1.75rem;
   }
-  
+
   .end-season-section h1 {
     font-size: 1.5rem;
   }
-  
+
   .end-season-section p {
     font-size: 1rem;
   }
@@ -458,9 +519,24 @@ section + section {
   margin: 0;
 }
 
-.col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
-.col-7, .col-8, .col-9, .col-10, .col-11, .col-12,
-.col-auto, .col-sm, .col-md, .col-lg, .col-xl {
+.col,
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col-auto,
+.col-sm,
+.col-md,
+.col-lg,
+.col-xl {
   padding-left: 15px;
   padding-right: 15px;
 }

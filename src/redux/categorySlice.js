@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getCategoriesAPI } from "../services/productCategoryAPI";
+import { toast } from "react-toastify";
 
 export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
@@ -30,6 +31,7 @@ const categorySlice = createSlice({
       .addCase(fetchCategories.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        toast.error(action.payload);
       });
   },
 });

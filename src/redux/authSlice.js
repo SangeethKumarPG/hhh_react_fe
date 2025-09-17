@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { signupAPI, loginAPI } from "../services/authAPI";
+import { toast } from "react-toastify";
 
 export const signupUser = createAsyncThunk(
   "auth/signupUser",
@@ -18,7 +19,6 @@ export const signupUser = createAsyncThunk(
   }
 );
 
-
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (userDetails, { rejectWithValue }) => {
@@ -31,7 +31,6 @@ export const loginUser = createAsyncThunk(
 
       const data = response.data;
 
-      
       if (data.access) {
         sessionStorage.setItem("access_token", data.access);
         sessionStorage.setItem("refresh_token", data.refresh);
@@ -63,7 +62,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      
+
       .addCase(signupUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -75,8 +74,8 @@ const authSlice = createSlice({
       .addCase(signupUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        toast.error(action.payload);
       })
-
 
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
@@ -91,6 +90,7 @@ const authSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        toast.error(action.payload);
       });
   },
 });

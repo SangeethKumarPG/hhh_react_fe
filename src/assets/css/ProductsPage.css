@@ -35,7 +35,7 @@
 
 .product-card {
   position: relative;
-  background: #fff;
+  background: #ffa0a0;
   border: 1px solid #eee;
   border-radius: 12px;
   overflow: hidden;
@@ -116,6 +116,5 @@
 }
 
 .products-page-container {
-  padding-top: 80px; 
+  padding-top: 80px;
 }
-

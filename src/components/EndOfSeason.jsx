@@ -9,7 +9,9 @@ const EndOfSeason = () => {
     const handleScroll = () => {
       if (sectionRef.current) {
         // Parallax effect: move background slower than scroll
-        sectionRef.current.style.backgroundPosition = `center ${window.scrollY * 0.3}px`;
+        sectionRef.current.style.backgroundPosition = `center ${
+          window.scrollY * 0.05
+        }px`;
       }
     };
 
