@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
 import {
   getProductDetailsAPI,
   getProductMediaAPI,
@@ -58,6 +59,7 @@ const productDetailsSlice = createSlice({
       .addCase(fetchProductDetails.fulfilled, (state, action) => {
         state.loading = false;
         state.product = action.payload;
+        // toast.success("Product details fetched successfully");
       })
       .addCase(fetchProductDetails.rejected, (state, action) => {
         state.loading = false;
@@ -72,6 +74,7 @@ const productDetailsSlice = createSlice({
       .addCase(fetchProductMedia.fulfilled, (state, action) => {
         state.loading = false;
         state.media = action.payload;
+        // toast.success("Product media fetched successfully");
       })
       .addCase(fetchProductMedia.rejected, (state, action) => {
         state.loading = false;

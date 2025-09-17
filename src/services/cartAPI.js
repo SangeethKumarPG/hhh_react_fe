@@ -1,15 +1,27 @@
 
-import { commonAPI } from "./commonAPI";
+import { commonAPI, refreshAccessToken } from "./commonAPI";
 import { BASE_URL, CART_URL } from "./baseURL";
 
 
-const authHeaders = () => {
-  const accessToken = sessionStorage.getItem("access_token");
+export const authHeaders = async () => {
+  let accessToken = sessionStorage.getItem("access_token");
+
+  if (!accessToken) {
+    console.log("No access token, calling refresh...");
+    await refreshAccessToken();
+    accessToken = sessionStorage.getItem("access_token");
+    console.log(accessToken)
+    if (!accessToken) {
+      throw new Error("Unable to refresh access token");
+    }
+  }
+
   return {
     "Content-Type": "application/json",
-    Authorization: accessToken ? `Bearer ${accessToken}` : "",
+    Authorization: `Bearer ${accessToken}`,
   };
 };
+
 
 
 export const fetchCartAPI = async () => {
@@ -17,7 +29,7 @@ export const fetchCartAPI = async () => {
     "GET",
     `${BASE_URL}/basket-items/view-cart/`,
     "",
-    authHeaders()
+    await authHeaders()
   );
 };
 

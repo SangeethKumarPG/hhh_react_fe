@@ -239,36 +239,9 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Auth Buttons */}
-      <div className="order-3 navbar-right-elements   d-lg-flex align-items-center">
-        <div
-          style={{
-            // backgroundColor: "grey",
-            display: "flex",
-            alignItems: "start",
-            justifyContent: "end",
-            paddingBottom: "10px",
-            paddingRight: "1%",
-          }}
-          className="auth-buttons ml-3"
-          id="auth-buttons"
-        >
-          {/* <li
-            style={{
-              backgroundColor: "grey",
-              // height: "20px",
-              listStyle: "none",
-              margin: "auto",
-              marginRight: "20px",
-              padding: "10px 13px 8px 13px",
-              borderRadius: "50%",
-              marginTop: "10px",
-            }}
-            className="jjj"
-          >
-            <Link className="nav-link">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </Link>
-          </li> */}
+
+      <div className="order-3 navbar-right-elements d-none d-lg-flex align-items-center">
+        <div className="auth-buttons ml-2 d-flex" id="auth-buttons">
           {!isAuthenticated ? (
             <>
               <Link

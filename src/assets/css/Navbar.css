@@ -92,6 +92,8 @@
 @media screen and (max-width: 992px) {
   .nav-item.dropdown > .dropdown-menu {
     position: absolute;
+    left: 50%;
+    transform: translate(-50%, 10%);
   }
   .kkk {
     left: 50%;
@@ -118,10 +120,10 @@
     /* transform: translateX(-50%, 0%) !important; */
     /* background-color: aqua !important; */
   }
-
-  /* .mega-menu {
+  /* 
+  .mega-menu {
     position: absolute;
-    left: -50% !important;
+    left: 50% !important;
     margin-left: 0 !important;
     width: 100% !important;
     top: 20 !important;
@@ -141,8 +143,18 @@
     margin-left: 120px;
   }
 }
+
 @media screen and (max-width: 600px) {
   .jjj {
     display: none;
   }
+}
+
+#auth-buttons .btn-sm,
+.navbar .btn-sm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  padding: 0.375rem 0.75rem;
 }

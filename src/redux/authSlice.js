@@ -66,6 +66,7 @@ const authSlice = createSlice({
       .addCase(signupUser.pending, (state) => {
         state.loading = true;
         state.error = null;
+        toast.success("Registration Successfull");
       })
       .addCase(signupUser.fulfilled, (state, action) => {
         state.loading = false;
@@ -86,6 +87,7 @@ const authSlice = createSlice({
         state.user = action.payload.user || null;
         state.accessToken = action.payload.access;
         state.refreshToken = action.payload.refresh;
+        toast.success("Login Successfull");
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;

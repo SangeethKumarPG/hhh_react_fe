@@ -109,9 +109,26 @@ export default function SignupPage() {
           required
         />
 
-        <label className="terms">
-          <input type="checkbox" required />
-          Agree with Terms & Conditions
+        <label
+          style={{
+            width: "100%",
+            height: "30px",
+            display: "flex",
+            // backgroundColor: "red",
+            alignItems: "center",
+            justifyContent: "start",
+            position: "relative",
+          }}
+          className=""
+        >
+          <input
+            style={{ position: "absolute", left: "-120px" }}
+            type="checkbox"
+            required
+          />
+          <p style={{ position: "absolute", left: "75px", marginTop: "5px" }}>
+            Agree with Terms & Conditions
+          </p>
         </label>
 
         <button className="btn" type="submit" disabled={loading}>

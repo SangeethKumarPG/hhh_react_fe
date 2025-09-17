@@ -104,6 +104,7 @@ const cartSlice = createSlice({
       .addCase(fetchCart.fulfilled, (state, action) => {
         state.loading = false;
         state.items = action.payload;
+        // toast.success("Cart fetched successfully");
       })
       .addCase(fetchCart.rejected, (state, action) => {
         state.loading = false;
@@ -117,6 +118,7 @@ const cartSlice = createSlice({
         state.items = state.items.map((item) =>
           item.id === updatedItem.id ? updatedItem : item
         );
+        toast.success("Quantity updated successfully");
       })
       .addCase(updateCartQuantity.rejected, (state, action) => {
         state.error = action.payload;
@@ -126,6 +128,7 @@ const cartSlice = createSlice({
     builder
       .addCase(removeCartItem.fulfilled, (state, action) => {
         state.items = state.items.filter((item) => item.id !== action.payload);
+        toast.success("Item removed successfully");
       })
       .addCase(removeCartItem.rejected, (state, action) => {
         state.error = action.payload;
@@ -149,6 +152,7 @@ const cartSlice = createSlice({
         } else {
           state.items.push(newItem);
         }
+        toast.success("Item added to cart successfully");
       })
       .addCase(addToCartThunk.rejected, (state, action) => {
         state.loading = false;
@@ -162,7 +166,9 @@ const cartSlice = createSlice({
       })
       .addCase(buyNowThunk.fulfilled, (state, action) => {
         state.loading = false;
+
         state.items = [action.payload];
+        toast.success("Item added to cart successfully");
       })
       .addCase(buyNowThunk.rejected, (state, action) => {
         state.loading = false;
