@@ -1,25 +1,25 @@
 .search-area-10 {
   position: absolute;
   width: 100%;
-  /* background-color: rgb(237, 237, 237); */
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin-top: 00px;
+  margin-top: 0px;
   gap: 5px;
   padding: 10px;
-  /* z-index: ; */
 }
+
 .search-area-11 input {
-  /* border: none; */
   background-color: white;
 }
+
 .search-area-11 {
   display: flex;
   align-items: start;
   width: 100%;
   gap: 5px;
 }
+
 .search-down {
   width: 90%;
   padding: 10px;
@@ -27,9 +27,40 @@
   background-color: rgb(209, 209, 209);
   z-index: 6;
 }
+
+.search-down ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .search-down li {
   line-height: 40px;
 }
+
+/* ✅ New styles for image + text */
+.search-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.search-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.search-thumb {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Responsive */
 @media screen and (min-width: 700px) {
   .search-area-10 {
     margin: auto;
