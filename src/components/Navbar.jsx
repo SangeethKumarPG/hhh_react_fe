@@ -206,28 +206,34 @@ const Navbar = () => {
         <div className="d-lg-none mt-3 text-end">
           {!isAuthenticated ? (
             <>
-              {/* <Link
+              <Link
+                style={{
+                  width: "120px",
+                  padding: "10px",
+                  backgroundColor: "red",
+                }}
                 to="/login"
                 className="btn btn-outline-dark btn-sm me-2 my-0"
               >
                 Login
-              </Link> */}
-              <Link
+              </Link>
+              {/* <Link
                 style={{ width: "120px", padding: "10px" }}
                 to="/signup"
                 className="btn  btn-dark btn-sm my-0"
               >
                 Sign Up
-              </Link>
+              </Link> */}
             </>
           ) : (
             <button
               style={{
                 width: "120px",
                 margin: "auto",
-                marginLeft: "10%",
+                marginLeft: "2%",
+                padding: "10px",
                 // margin: "auto",
-                // backgroundColor: "red",
+                backgroundColor: "black",
               }}
               onClick={handleLogout}
               className="btn btn-outline-dark btn-sm "
@@ -240,7 +246,10 @@ const Navbar = () => {
 
       {/* Desktop Auth Buttons */}
 
-      <div className="order-3 navbar-right-elements d-none d-lg-flex align-items-center">
+      <div
+        style={{ paddingBottom: "10px" }}
+        className="order-3 navbar-right-elements d-none d-lg-flex align-items-center"
+      >
         <div className="auth-buttons ml-2 d-flex" id="auth-buttons">
           {!isAuthenticated ? (
             <>
@@ -251,21 +260,26 @@ const Navbar = () => {
                   width: "100px",
                   padding: "14px",
                 }}
-                className="btn btn-outline-dark btn-sm me-2"
+                className="btn log22 btn-outline-dark btn-sm me-2"
               >
                 Login
               </Link>
               <Link
                 style={{ width: "120px", padding: "14px" }}
                 to="/signup"
-                className=" d-none d-xl-block btn btn-dark btn-sm"
+                className=" d-none d-xl-block log33 btn btn-dark btn-sm"
               >
                 Sign Up
               </Link>
             </>
           ) : (
             <button
-              style={{ padding: "10px", width: "100px", marginTop: "10px" }}
+              style={{
+                padding: "10px",
+                backgroundColor: "black",
+                width: "100px",
+                marginTop: "10px",
+              }}
               onClick={handleLogout}
               className="btn d-none d-lg-block btn-outline-dark btn-sm"
             >

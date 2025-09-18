@@ -96,7 +96,7 @@ const LoginPage = () => {
                 Remember me?
               </p>
             </label>
-            <a href="#">Forgot password?</a>
+            <a href="/reset">Forgot password?</a>
           </div>
 
           <button

@@ -13,19 +13,18 @@
 .herohead {
   background: url("/images/backgrounds/deal.jpg") center/cover no-repeat;
   color: rgba(255, 255, 255, 0);
+  /* background-color: #666; */
   padding: 200px 0 50px;
   text-align: center;
   position: relative;
 }
 
-
-
 @media (max-width: 768px) {
   .herohead {
+    /* background-color: #ff4d4d !important; */
     padding: 220px 0 60px; /* extra top padding for mobile nav */
   }
 }
-
 
 .herohead h1 {
   font-size: 48px;
@@ -100,4 +99,3 @@ blockquote {
   font-size: 15px;
   font-style: italic;
 }
-

@@ -89,8 +89,8 @@ const ProductCollection = () => {
                 onClick={() => setSelected(product.id)}
               >
                 <img
-                  // src={"/src/assets/images/categories/bottle.png"}
-                  src={product?.image}
+                  src={"/src/assets/images/categories/bottle.png"}
+                  // src={product?.image}
                   alt={product.name}
                   className="card-img-top product-img"
                 />

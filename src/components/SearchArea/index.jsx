@@ -34,13 +34,14 @@ const SearchArea = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           type="text"
-          placeholder="Search here"
+          placeholder="Search here 'hhh car perfume'"
         />
         <i
           style={{
-            backgroundColor: "rgba(204, 204, 204, 1)",
+            backgroundColor: "rgba(0, 0, 0, 1)",
             padding: "19px 35px 19px 20px",
             borderRadius: "15%",
+            color: "white",
           }}
           className="fa-solid fa-magnifying-glass"
         ></i>

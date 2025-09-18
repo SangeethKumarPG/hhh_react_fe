@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../assets/css/AboutPage.css";
 
-
 import product1 from "../assets/images/collection/product1.png";
 import product2 from "../assets/images/collection/product2.png";
 import amazonLogo from "../assets/images/amazon-logo.png";
@@ -33,9 +32,9 @@ const AboutPage = () => {
             <div className="col-md-6">
               <h2 className="section-title mb-4">Why Choose Us</h2>
               <p>
-                Welcome to HHH Perfumes, where passion meets the art of perfumery.
-                Established in 1999, we have been crafting exceptional fragrances
-                that inspire, uplift, and captivate.
+                Welcome to HHH Perfumes, where passion meets the art of
+                perfumery. Established in 1999, we have been crafting
+                exceptional fragrances that inspire, uplift, and captivate.
               </p>
               <p>
                 At HHH Perfume, we believe that fragrance is more than just a
@@ -43,16 +42,20 @@ const AboutPage = () => {
               </p>
               <div className="check-list mt-3">
                 <div className="icon-text">
-                  <i className="bi bi-check-circle-fill"></i> Engineered for Long-Lasting Car Freshness
+                  <i className="bi bi-check-circle-fill"></i> Engineered for
+                  Long-Lasting Car Freshness
                 </div>
                 <div className="icon-text">
-                  <i className="bi bi-check-circle-fill"></i> Crafted Using Premium Automotive-Grade Ingredients
+                  <i className="bi bi-check-circle-fill"></i> Crafted Using
+                  Premium Automotive-Grade Ingredients
                 </div>
                 <div className="icon-text">
-                  <i className="bi bi-check-circle-fill"></i> Designed to Eliminate Odors, Not Just Mask Them
+                  <i className="bi bi-check-circle-fill"></i> Designed to
+                  Eliminate Odors, Not Just Mask Them
                 </div>
                 <div className="icon-text">
-                  <i className="bi bi-check-circle-fill"></i> Collaborations with Master Perfumers for Signature Scents
+                  <i className="bi bi-check-circle-fill"></i> Collaborations
+                  with Master Perfumers for Signature Scents
                 </div>
               </div>
             </div>
@@ -88,26 +91,28 @@ const AboutPage = () => {
             </div>
             <div className="col-md-6">
               <h6 className="text-orange fw-bold">Product Of India</h6>
-              <h2 className="section-title">Timeless Fragrances: Crafted with Passion</h2>
+              <h2 className="section-title">
+                Timeless Fragrances: Crafted with Passion
+              </h2>
               <blockquote className="fst-italic text-muted border-start ps-3 my-3">
-                “Discover the Essence of HHHPerfumes, Where Passion Meets Craftsmanship. 
-                Embark on a Scented Journey of Elegance and Expression.”
+                “Discover the Essence of HHHPerfumes, Where Passion Meets
+                Craftsmanship. Embark on a Scented Journey of Elegance and
+                Expression.”
               </blockquote>
               <p>
-                At HHHPerfumes, our story goes beyond just fragrance. Since 1999, we’ve
-                blended the finest ingredients into captivating aromas that celebrate
-                individuality, emotion, and timeless beauty—crafted to enhance every mood
-                and moment.
+                At HHHPerfumes, our story goes beyond just fragrance. Since
+                1999, we’ve blended the finest ingredients into captivating
+                aromas that celebrate individuality, emotion, and timeless
+                beauty—crafted to enhance every mood and moment.
               </p>
 
-              <div className="d-flex gap-5 align-items-center mt-3">
+              <div
+                style={{ flexWrap: "wrap" }}
+                className="d-flex  gap-2 align-items-center mt-3"
+              >
                 {/* Amazon Reviews */}
                 <div className="review-box d-flex align-items-center gap-3">
-                  <img
-                    src={amazonLogo}
-                    alt="Amazon"
-                    className="review-logo"
-                  />
+                  <img src={amazonLogo} alt="Amazon" className="review-logo" />
                   <div>
                     <div className="d-flex align-items-center gap-1 text-warning">
                       <i className="bi bi-star-fill"></i>
@@ -115,7 +120,9 @@ const AboutPage = () => {
                       <i className="bi bi-star-fill"></i>
                       <i className="bi bi-star-fill"></i>
                       <i className="bi bi-star"></i>
-                      <span className="text-muted ms-2 fw-semibold">(3.9/5)</span>
+                      <span className="text-muted ms-2 fw-semibold">
+                        (3.9/5)
+                      </span>
                     </div>
                     <div className="text-muted mt-1">
                       <strong>1000+</strong> • <strong>Amazon Reviews</strong>
@@ -137,7 +144,9 @@ const AboutPage = () => {
                       <i className="bi bi-star-fill"></i>
                       <i className="bi bi-star-fill"></i>
                       <i className="bi bi-star-half"></i>
-                      <span className="text-muted ms-2 fw-semibold">(4.1/5)</span>
+                      <span className="text-muted ms-2 fw-semibold">
+                        (4.1/5)
+                      </span>
                     </div>
                     <div className="text-muted mt-1">
                       <strong>1000+</strong> • <strong>Flipkart Reviews</strong>
@@ -153,7 +162,9 @@ const AboutPage = () => {
       {/* Certifications */}
       <section className="py-5">
         <div className="container">
-          <h2 className="section-title text-center mb-4">Our Standards: Certified & Recognized</h2>
+          <h2 className="section-title text-center mb-4">
+            Our Standards: Certified & Recognized
+          </h2>
           <hr
             style={{
               border: "none",
@@ -187,28 +198,28 @@ const AboutPage = () => {
             <div className="col-md-6">
               <ul className="list-unstyled">
                 <li>
-                  <i className="bi bi-check-circle-fill text-warning"></i> Rich vanilla
-                  essence delivers long-lasting freshness.
+                  <i className="bi bi-check-circle-fill text-warning"></i> Rich
+                  vanilla essence delivers long-lasting freshness.
                 </li>
                 <li>
-                  <i className="bi bi-check-circle-fill text-warning"></i> Balanced
-                  formulation prevents overpowering intensity.
+                  <i className="bi bi-check-circle-fill text-warning"></i>{" "}
+                  Balanced formulation prevents overpowering intensity.
                 </li>
               </ul>
             </div>
             <div className="col-md-6">
               <ul className="list-unstyled">
                 <li>
-                  <i className="bi bi-check-circle-fill text-warning"></i> Every spray
-                  maintains consistent aroma quality.
+                  <i className="bi bi-check-circle-fill text-warning"></i> Every
+                  spray maintains consistent aroma quality.
                 </li>
                 <li>
-                  <i className="bi bi-check-circle-fill text-warning"></i> Natural extracts
-                  reduce irritation and enhance appeal.
+                  <i className="bi bi-check-circle-fill text-warning"></i>{" "}
+                  Natural extracts reduce irritation and enhance appeal.
                 </li>
                 <li>
-                  <i className="bi bi-check-circle-fill text-warning"></i> Crafted for smooth
-                  diffusion and soothing ambiance.
+                  <i className="bi bi-check-circle-fill text-warning"></i>{" "}
+                  Crafted for smooth diffusion and soothing ambiance.
                 </li>
               </ul>
             </div>
