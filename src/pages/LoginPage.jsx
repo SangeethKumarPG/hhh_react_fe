@@ -4,6 +4,7 @@ import logo from "../assets/images/HHH logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../redux/authSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -19,8 +20,10 @@ const LoginPage = () => {
   useEffect(() => {
     if (accessToken) {
       navigate("/");
+    } else if (error) {
+      toast.error(error);
     }
-  }, [accessToken, navigate]);
+  }, [accessToken, error, navigate]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -64,19 +67,47 @@ const LoginPage = () => {
           />
 
           <div className="d-flex justify-content-between align-items-center mb-3">
-            <label className="mb-0">
-              <input type="checkbox" className="me-2" /> Remember me?
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0px",
+                justifyContent: "start",
+                position: "relative",
+                paddingLeft: "10px",
+                // backgroundColor: "red",
+                // width: "0px",
+              }}
+              className="mb-0"
+            >
+              <input
+                style={{ marginTop: "5px" }}
+                type="checkbox"
+                className="me-2"
+              />
+              <p
+                style={{
+                  position: "absolute",
+                  width: "130px",
+                  left: "20px",
+                  top: "1px",
+                }}
+              >
+                Remember me?
+              </p>
             </label>
-            <a href="#">Forgot password?</a>
+            <a href="/reset">Forgot password?</a>
           </div>
 
-          <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+          <button
+            type="submit"
+            className="btn btn-primary w-100"
+            disabled={loading}
+          >
             {loading ? "Logging in..." : "Login"}
           </button>
 
-          {error && (
-            <p className="text-danger mt-3">{JSON.stringify(error)}</p>
-          )}
+          {error && <p className="text-danger mt-3">{JSON.stringify(error)}</p>}
 
           <p className="or mt-4">Or Continue With</p>
 

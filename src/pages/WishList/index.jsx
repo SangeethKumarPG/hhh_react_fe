@@ -1,0 +1,80 @@
+import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar";
+import "./style.css";
+import { useState } from "react";
+import Footer from "../../components/Footer";
+import { useSelector } from "react-redux";
+
+const WishList = () => {
+  const [data, setData] = useState(false);
+
+  const { items, loading, error } = useSelector((state) => state.Wishlist);
+
+  const fullWidthStyle = {
+    width: "100%",
+    margin: "0",
+    padding: "0", // Fixed typo: was 'paddig'
+  };
+
+  return (
+    <div className="wishlist-1">
+      <Navbar />
+
+      <h1>Your Wish List Items</h1>
+      {loading ? (
+        <p>loading...</p>
+      ) : error ? (
+        <p>please login or some error happened</p>
+      ) : items.length > 0 ? (
+        <div className="wishlist-2">
+          {items.map((product) => (
+            <Link
+              key={product.id}
+              to={`/product/${product.id}`}
+              className="product-card-link"
+            >
+              <div className="product-card">
+                {product.is_sale && <span className="badge sale">Sale</span>}
+                {product.is_bestseller && (
+                  <span className="badge bestseller">Best Seller</span>
+                )}
+                <i class="fa-solid fa-xmark close-3"></i>
+                <img
+                  //   src={
+                  //     product.image.startsWith("http")
+                  //       ? product.image
+                  //       : "http://127.0.0.1:8000/" + product.image
+                  //   }
+                  src="/src/assets/images/collection/product1.png"
+                  alt={product.name}
+                  className="product-image"
+                />
+                <div className="product-details">
+                  <p className="brand">{product.brand || "No Brand"} Vanilla</p>
+                  <h4 className="product-name">
+                    {product.name} HHH Car Perfume
+                  </h4>
+                  <p className="price">
+                    {product.old_price && (
+                      <span className="old-price">
+                        ₹ {product.old_price} 200
+                      </span>
+                    )}
+                    <span className="new-price">₹ {product.price} 250</span>
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <p className="wish-p" onClick={() => setData(!data)}>
+          No wishlist added !
+        </p>
+      )}
+      <Footer style={fullWidthStyle} />
+    </div>
+  );
+};
+
+export default WishList;

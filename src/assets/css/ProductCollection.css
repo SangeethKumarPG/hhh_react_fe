@@ -1,24 +1,21 @@
 .custom-card {
   width: 18rem;
   border-radius: 15px;
+  position: relative;
   border: 1px solid #eee;
   transition: all 0.3s ease;
+  /* background-color: #ffffff; */
   cursor: pointer;
+  /* padding-top: 100px; */
 }
 
-.custom-card.active {
-  background: #4abdf3; /* Blue highlight */
+.custom-card {
+  /* Blue highlight */
   color: #fff;
 }
 
 .custom-card.active .price-text {
   color: #fff;
-}
-
-.product-img {
-  max-height: 150px;
-  object-fit: contain;
-  margin: 0 auto;
 }
 
 .custom-select {

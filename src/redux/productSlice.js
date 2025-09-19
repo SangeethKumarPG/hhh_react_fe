@@ -1,7 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getProductsAPI, getProductsByCategoryAPI } from "../services/productCategoryAPI";
-import { toast } from "react-toastify";
 
+import {
+  getProductsAPI,
+  getProductsByCategoryAPI,
+} from "../services/productCategoryAPI";
+import { toast } from "react-toastify";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",

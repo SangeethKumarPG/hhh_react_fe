@@ -35,16 +35,19 @@ const Navbar = () => {
 
   return (
     <nav
+      style={{
+        paddingTop: "30px",
+        paddingBottom: "20px",
+        paddingRight: "20px",
+      }}
       className="navbar navbar-expand-lg navbar-light bg-white w-100 sticky"
       id="navbar"
     >
       {/* Brand Logo */}
-      <Link className="navbar-brand order-2 order-lg-1" to="/">
-        <img className="img-fluid" src={logo} alt="logo" />
-      </Link>
 
       {/* Mobile Toggle */}
       <button
+        style={{ margin: "auto", marginLeft: "10px" }}
         className="navbar-toggler"
         type="button"
         onClick={toggleMenu}
@@ -52,14 +55,34 @@ const Navbar = () => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-
+      <Link className="kkk" to="/">
+        <img
+          style={{}}
+          // className="img-fluid"
+          src={logo}
+          alt="logo"
+        />
+      </Link>
+      <a className="bbb" href="/wishlist">
+        <i class="fa-regular fa-heart"></i>
+      </a>
       {/* Navbar Collapse */}
       <div
         className={`navbar-collapse order-1 order-lg-2 collapse ${
           menuOpen ? "show" : ""
         }`}
       >
-        <ul className="navbar-nav mx-auto">
+        <ul
+          style={
+            {
+              // backgroundColor: "green",
+              // margin: "auto",
+              // marginLeft: "16%",
+              // display: "flex",
+            }
+          }
+          className="fff"
+        >
           <li className="nav-item">
             <Link className="nav-link" to="/">
               Home
@@ -85,7 +108,10 @@ const Navbar = () => {
               className={`dropdown-menu mega-menu ${megaOpen ? "show" : ""}`}
             >
               <div className="row">
-                <div className="col-md-4 text-center">
+                <div
+                  style={{ marginTop: "20px" }}
+                  className="col-md-4 text-center"
+                >
                   <img
                     src={product1}
                     alt="Car Perfumes"
@@ -99,7 +125,10 @@ const Navbar = () => {
                     Fragrance Diffusers
                   </Link>
                 </div>
-                <div className="col-md-4 text-center">
+                <div
+                  style={{ marginTop: "20px" }}
+                  className="col-md-4 text-center"
+                >
                   <img
                     src={bottle1}
                     alt="Body Perfumes"
@@ -113,7 +142,10 @@ const Navbar = () => {
                     Fragrance Diffusers
                   </Link>
                 </div>
-                <div className="col-md-4 text-center">
+                <div
+                  style={{ marginTop: "20px" }}
+                  className="col-md-4 text-center"
+                >
                   <img
                     src={product2}
                     alt="Multipurpose"
@@ -166,19 +198,36 @@ const Navbar = () => {
           {!isAuthenticated ? (
             <>
               <Link
+                style={{
+                  width: "120px",
+                  padding: "10px",
+                  backgroundColor: "red",
+                }}
                 to="/login"
                 className="btn btn-outline-dark btn-sm me-2 my-0"
               >
                 Login
               </Link>
-              <Link to="/signup" className="btn btn-dark btn-sm my-0">
+              {/* <Link
+                style={{ width: "120px", padding: "10px" }}
+                to="/signup"
+                className="btn  btn-dark btn-sm my-0"
+              >
                 Sign Up
-              </Link>
+              </Link> */}
             </>
           ) : (
             <button
+              style={{
+                width: "120px",
+                margin: "auto",
+                marginLeft: "2%",
+                padding: "10px",
+                // margin: "auto",
+                backgroundColor: "black",
+              }}
               onClick={handleLogout}
-              className="btn btn-outline-dark btn-sm my-0"
+              className="btn btn-outline-dark btn-sm "
             >
               Logout
             </button>
@@ -187,21 +236,46 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Auth Buttons */}
-      <div className="order-3 navbar-right-elements d-none d-lg-flex align-items-center">
+
+      <div
+        style={{ paddingBottom: "10px", gap: "20px" }}
+        className="order-3 navbar-right-elements d-none d-lg-flex align-items-center"
+      >
+        <a href="/wishlist">
+          <i class="fa-regular fa-heart"></i>
+        </a>
         <div className="auth-buttons ml-2 d-flex" id="auth-buttons">
           {!isAuthenticated ? (
             <>
-              <Link to="/login" className="btn btn-outline-dark btn-sm me-2">
+              <Link
+                to="/login"
+                style={{
+                  backgroundColor: "red",
+                  width: "100px",
+                  padding: "14px",
+                }}
+                className="btn log22 btn-outline-dark btn-sm me-2"
+              >
                 Login
               </Link>
-              <Link to="/signup" className="btn btn-dark btn-sm">
+              <Link
+                style={{ width: "120px", padding: "14px" }}
+                to="/signup"
+                className=" d-none d-xl-block log33 btn btn-dark btn-sm"
+              >
                 Sign Up
               </Link>
             </>
           ) : (
             <button
+              style={{
+                padding: "10px",
+                backgroundColor: "black",
+                width: "100px",
+                marginTop: "10px",
+              }}
               onClick={handleLogout}
-              className="btn btn-outline-dark btn-sm"
+              className="btn d-none d-lg-block btn-outline-dark btn-sm"
             >
               Logout
             </button>

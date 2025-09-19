@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import PerfumeBottle from "../assets/images/categories/bottle.1.png";
 import "../assets/css/ProductCollection.css";
 
-import { getProductsAPI } from "../services/productCategoryAPI"; 
-import { addToCartThunk } from "../redux/cartSlice"; 
+import { getProductsAPI } from "../services/productCategoryAPI";
+import { addToCartThunk } from "../redux/cartSlice";
 
 const fallbackProducts = [
   {
@@ -43,7 +43,7 @@ const ProductCollection = () => {
       try {
         const res = await getProductsAPI();
         if (res?.data && res.data.length > 0) {
-          setProducts(res.data.slice(0, 3)); 
+          setProducts(res.data.slice(0, 3));
         }
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -53,7 +53,6 @@ const ProductCollection = () => {
     fetchProducts();
   }, []);
 
-  
   const updateQuantity = (productId, delta) => {
     setQuantities((prev) => {
       const newQty = Math.max(1, (prev[productId] || 1) + delta);
@@ -61,7 +60,12 @@ const ProductCollection = () => {
     });
   };
 
-  
+  const hhh = [
+    { img: "/src/assets/images/categories/bottle.png" },
+    { img: "/src/assets/images/categories/bottle.png" },
+    { img: "/src/assets/images/categories/bottle.png" },
+  ];
+
   const handleAddToCart = (productId) => {
     const quantity = quantities[productId] || 1;
     dispatch(addToCartThunk({ productId, quantity }));
@@ -79,19 +83,22 @@ const ProductCollection = () => {
             {products.map((product, idx) => (
               <div
                 key={product.id || idx}
-                className={`custom-card p-3 ${
-                  selected === product.id ? "active" : ""
-                }`}
+                className={`card2 
+                  
+                `}
                 onClick={() => setSelected(product.id)}
               >
                 <img
-                  src={product.image || PerfumeBottle}
+                  src={"/src/assets/images/categories/bottle.png"}
+                  // src={product?.image}
                   alt={product.name}
                   className="card-img-top product-img"
                 />
+                <div className="span1"></div>
 
-                <div className="card-body text-center">
+                <div className="card-body  text-center">
                   <h5 className="card-title">{product.name}</h5>
+
                   <p className="card-text">{product.description}</p>
 
                   <div className="d-flex justify-content-center align-items-center mb-3 gap-3">
@@ -99,7 +106,10 @@ const ProductCollection = () => {
                       <option value="50">50 ml</option>
                       <option value="100">100 ml</option>
                     </select>
-                    <div className="fw-bold price-text">₹ {product.price}</div>
+                    {/* <div className="fw-bold card-text price-text">₹ 200</div> */}
+                    <div className="fw-bold card-text price-text">
+                      ₹ {product.price}
+                    </div>
                   </div>
 
                   <div className="d-flex justify-content-center align-items-center gap-3">

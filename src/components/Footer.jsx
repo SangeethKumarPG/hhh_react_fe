@@ -11,11 +11,9 @@ import card4 from "../assets/images/payment-card/card-4.jpg";
 export default function Footer() {
   return (
     <footer className="bg-light text-dark pt-5">
-
       {/* Top Footer Content */}
       <div className="container">
         <div className="row">
-
           {/* Contact */}
           <div className="col-md-2 mb-4">
             <h5>Contact</h5>
@@ -23,10 +21,18 @@ export default function Footer() {
             <p>+91 9846427382</p>
             <p>info@hhhperfumes.in</p>
             <div className="d-flex gap-2 mt-2">
-              <a href="#" className="text-dark" aria-label="Facebook"><FaFacebookF /></a>
-              <a href="#" className="text-dark" aria-label="Instagram"><FaInstagram /></a>
-              <a href="#" className="text-dark" aria-label="Twitter"><FaTwitter /></a>
-              <a href="#" className="text-dark" aria-label="Google"><FaGoogle /></a>
+              <a href="#" className="text-dark" aria-label="Facebook">
+                <FaFacebookF />
+              </a>
+              <a href="#" className="text-dark" aria-label="Instagram">
+                <FaInstagram />
+              </a>
+              <a href="#" className="text-dark" aria-label="Twitter">
+                <FaTwitter />
+              </a>
+              <a href="#" className="text-dark" aria-label="Google">
+                <FaGoogle />
+              </a>
             </div>
           </div>
 
@@ -62,7 +68,7 @@ export default function Footer() {
           <div className="col-md-3 mb-4">
             <h5>Our Newsletter</h5>
             <p>Subscribe to our newsletter to receive early discount offers</p>
-            <div className="d-flex mb-2">
+            <div style={{ flexDirection: "column" }} className="d-flex mb-2">
               <input
                 type="email"
                 className="form-control me-2"
@@ -71,26 +77,24 @@ export default function Footer() {
               <button className="btn btn-danger">SUBSCRIBE</button>
             </div>
           </div>
-
         </div>
       </div>
 
       {/* Footer Bottom - Full Width */}
-      <div 
-        className="py-3 mt-4 w-100" 
+      <div
+        className="py-3 mt-4 w-100"
         style={{ background: "linear-gradient(to right, #ff4d4d, #ff9999)" }}
       >
         <div className="d-flex justify-content-between align-items-center flex-wrap px-4">
           <span>HHH Perfumes © 2025 All rights reserved</span>
           <div className="d-flex gap-2 mt-2 mt-md-0">
-            <img src={card1} alt="Amex" height="30"/>
-            <img src={card2} alt="Discover" height="30"/>
-            <img src={card3} alt="Maestro" height="30"/>
-            <img src={card4} alt="Visa" height="30"/>
+            <img src={card1} alt="Amex" height="30" />
+            <img src={card2} alt="Discover" height="30" />
+            <img src={card3} alt="Maestro" height="30" />
+            <img src={card4} alt="Visa" height="30" />
           </div>
         </div>
       </div>
-
     </footer>
   );
 }

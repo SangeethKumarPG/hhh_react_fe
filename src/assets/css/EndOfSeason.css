@@ -4,7 +4,7 @@
   height: auto !important; /* Changed from 700px to auto */
   background-size: cover;
   background-attachment: fixed;
-  background-position: center center;
+  /* background-position: center center; */
   background-repeat: no-repeat;
   display: flex;
   align-items: center; /* vertically center content */

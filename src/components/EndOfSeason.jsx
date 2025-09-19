@@ -9,7 +9,9 @@ const EndOfSeason = () => {
     const handleScroll = () => {
       if (sectionRef.current) {
         // Parallax effect: move background slower than scroll
-        sectionRef.current.style.backgroundPosition = `center ${window.scrollY * 0.3}px`;
+        sectionRef.current.style.backgroundPosition = `center ${
+          window.scrollY * 0.05
+        }px`;
       }
     };
 
@@ -30,6 +32,7 @@ const EndOfSeason = () => {
             <p className="mb-4">
               Take 10% off on selected fragrances. Discount applied at checkout.
             </p>
+
             <a href="/products" className="btn btn-light w-25">
               Shop Now
             </a>
