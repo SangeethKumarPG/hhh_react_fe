@@ -11,6 +11,7 @@ import ProductDetailsPage from "./pages/productDetailsPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ContactUs from "./pages/ContactUs";
 import PasswordReset from "./pages/PasswordReset";
+import WishList from "./pages/WishList";
 
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
@@ -29,7 +30,7 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/reset" element={<PasswordReset />} />
-
+          <Route path="/wishlist" element={<WishList />} />
           {/* <Route path="/shop" element={<Shop />}></Route> */}
           {/* other routes */}
         </Routes>

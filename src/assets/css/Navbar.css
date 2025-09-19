@@ -56,6 +56,7 @@
   /* z-index: ; */
   /* background-color: antiquewhite; */
 }
+
 /* Cart wrapper styling */
 .cart-wrapper {
   position: absolute;
@@ -92,9 +93,40 @@
 .navbar-collapse {
   overflow: visible !important;
 }
-
+.order-3 .fa-heart {
+  background-color: rgb(232, 232, 232);
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+  margin-top: 12px;
+  color: rgb(166, 166, 166);
+}
+.order-3 .fa-heart:hover {
+  background-color: rgba(0, 0, 0, 0.043);
+  color: rgb(254, 39, 39);
+  scale: 1.06;
+}
+.bbb .fa-heart {
+  display: none;
+}
 /* Mobile responsiveness */
 @media screen and (max-width: 992px) {
+  .bbb .fa-heart {
+    /* background-color: rgb(232, 232, 232); */
+    width: 40px;
+    height: 40px;
+    display: grid;
+    font-size: 25px;
+    place-content: center;
+    border-radius: 50%;
+    margin-top: 5px;
+    color: rgb(255, 85, 85);
+  }
+  .bbb .fa-heart:active {
+    background-color: rgb(215, 215, 215);
+  }
   .nav-item.dropdown > .dropdown-menu {
     position: absolute;
     left: 50%;

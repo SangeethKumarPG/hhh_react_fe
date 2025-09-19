@@ -17,20 +17,33 @@ const PasswordReset = () => {
 
       <div className="password-2">
         {!data && (
-          <div className="pass-card">
+          <form className="pass-card">
             <label style={{ fontSize: "20px" }} htmlFor="ff">
               Email
             </label>
             <input
+              type="email"
               placeholder="Enter Your Email"
               className=""
-              type="text"
               id="mail"
+              required
             />
+
+            <label style={{ fontSize: "20px" }} htmlFor="ff">
+              OTP
+            </label>
+            <input placeholder="Enter OTP" className="" type="text" id="mail" />
+            <button
+              type="submit"
+              className="pass-button"
+              onClick={() => setData(!data)}
+            >
+              Get OTP
+            </button>
             <button className="pass-button" onClick={() => setData(!data)}>
               Verify
             </button>
-          </div>
+          </form>
         )}
 
         {data && (

@@ -36,7 +36,7 @@ const Navbar = () => {
   return (
     <nav
       style={{
-        paddingTop: "20px",
+        paddingTop: "30px",
         paddingBottom: "20px",
         paddingRight: "20px",
       }}
@@ -55,19 +55,7 @@ const Navbar = () => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <Link
-        style={
-          {
-            // margin: "auto",
-            // backgroundColor: "yellow",
-            // position: "absolute",
-            // left: "50%",
-            // transform: "translate(-50%,10%)",
-          }
-        }
-        className="kkk"
-        to="/"
-      >
+      <Link className="kkk" to="/">
         <img
           style={{}}
           // className="img-fluid"
@@ -75,6 +63,9 @@ const Navbar = () => {
           alt="logo"
         />
       </Link>
+      <a className="bbb" href="/wishlist">
+        <i class="fa-regular fa-heart"></i>
+      </a>
       {/* Navbar Collapse */}
       <div
         className={`navbar-collapse order-1 order-lg-2 collapse ${
@@ -247,9 +238,12 @@ const Navbar = () => {
       {/* Desktop Auth Buttons */}
 
       <div
-        style={{ paddingBottom: "10px" }}
+        style={{ paddingBottom: "10px", gap: "20px" }}
         className="order-3 navbar-right-elements d-none d-lg-flex align-items-center"
       >
+        <a href="/wishlist">
+          <i class="fa-regular fa-heart"></i>
+        </a>
         <div className="auth-buttons ml-2 d-flex" id="auth-buttons">
           {!isAuthenticated ? (
             <>
