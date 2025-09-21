@@ -40,7 +40,7 @@ const WishList = () => {
           {items.map((product) => (
             <Link
               key={product.id}
-              to={`/product/${product.id}`}
+              to={`/product/${product.product}`}
               className="product-card-link"
             >
               <div className="product-card">

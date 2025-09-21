@@ -49,6 +49,6 @@ export const removeWishAPI = async (id) => {
     "DELETE",
     `${BASE_URL}/wishlist/${id}/remove_from_wishlist/`,
     "",
-    authHeaders()
+    await authHeaders()
   );
 };
