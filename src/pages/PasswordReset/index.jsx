@@ -9,23 +9,27 @@ const PasswordReset = () => {
   const [data, setData] = useState(false);
   // const[mail,setMail]=useState({emai:""})
   const [collect, setcollect] = useState({ email: "" });
-  const [otp, setOTP] = useState({ otp: "" });
+  const [VerifyOtp, setOTP] = useState({ otp: "" });
   const [pass, setPass] = useState("");
   const navigate = useNavigate();
 
-  const SendMail = (e) => {
-    setcollect({ ...collect, [e.target.name]: e.target.value });
+  const OnchangeMail = (e) => {
+    setcollect({ [e.target.name]: e.target.value });
   };
 
-  const SendOTP = (e) => {
-    setOTP({ ...otp, [e.target.name]: e.target.value });
+  const OnchangeOTP = (e) => {
+    setOTP({ ...VerifyOtp, [e.target.name]: e.target.value });
   };
 
-  // verify mail that registered to generate otp
+  //------------------------------------------ verify mail that registered for generate otp
+
   const SubmitMail = async () => {
     try {
       const response = await axios.post(
-        `${BASE_URL}/otp-generate/${collect.email}`
+        `${BASE_URL}/send-verification-email/`,
+        {
+          email: collect.email,
+        }
       );
 
       if (response.success) return toast.success("email registered");
@@ -34,14 +38,18 @@ const PasswordReset = () => {
     } catch (e) {
       toast.error(e.error);
     }
+
+    // console.log("email", collect.email);
   };
 
-  // verify otp
+  //--------------------------------------------------- verify otp
+
   const SubmitOTP = async () => {
     try {
-      const response = await axios.post(
-        `${BASE_URL}/otp-generate/${otp.otp}/${collect.email}`
-      );
+      const response = await axios.post(`${BASE_URL}/verify-otp/`, {
+        otp: VerifyOtp.otp,
+        email: collect.email,
+      });
 
       if (response.success) {
         setData(true);
@@ -52,22 +60,24 @@ const PasswordReset = () => {
     } catch (e) {
       toast.error(e.error);
     }
+    // console.log("otp", otp.otp);
   };
 
-  // update password
+  //---------------------------------------------------- update password
 
   const NewPassword = (e) => {
     setPass(e.target.value);
   };
+
   const UpdatePassword = async () => {
     try {
       const response = await axios.patch(
-        `${BASE_URL}/updatepass/${collect.email}`,
+        `${BASE_URL}/request-reset-password/`,
         {
+          email: collect.email,
           password: pass,
         }
       );
-
       if (response.success) {
         return toast.success("password changed successfully");
       } else return toast.error("something went wrong");
@@ -76,7 +86,7 @@ const PasswordReset = () => {
     }
   };
 
-  useEffect(() => {}, [collect, pass, otp]);
+  useEffect(() => {}, [collect, pass, VerifyOtp]);
 
   return (
     <div className="password-reset">
@@ -89,13 +99,13 @@ const PasswordReset = () => {
 
       <div className="password-2">
         {!data && (
-          <form className="pass-card">
+          <div className="pass-card">
             <label style={{ fontSize: "20px" }} htmlFor="ff">
               Email
             </label>
             <input
               name="email"
-              onChange={SendMail}
+              onChange={OnchangeMail}
               type="email"
               placeholder="Enter Your Email"
               className=""
@@ -108,23 +118,19 @@ const PasswordReset = () => {
             </label>
             <input
               name="otp"
-              onChange={SendOTP}
+              onChange={OnchangeOTP}
               placeholder="Enter OTP"
               className=""
               type="text"
               id="mail"
             />
-            <button
-              type="submit"
-              className="pass-button"
-              onClick={() => SubmitOTP()}
-            >
+            <button className="pass-button" onClick={SubmitMail}>
               Get OTP
             </button>
-            <button className="pass-button" onClick={SubmitMail}>
+            <button className="pass-button" onClick={SubmitOTP}>
               Verify
             </button>
-          </form>
+          </div>
         )}
 
         {data && (
@@ -138,7 +144,7 @@ const PasswordReset = () => {
               type="text"
               id="new"
             />
-            <button onClick={UpdatePassword()} className="pass-button">
+            <button onClick={UpdatePassword} className="pass-button">
               Change Password
             </button>
           </div>
