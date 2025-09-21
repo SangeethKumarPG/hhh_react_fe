@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import "./style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { fetchWish, removeWishItem } from "../../redux/wishSlice";
 
 const WishList = () => {
   const [data, setData] = useState(false);
 
-  const { items, loading, error } = useSelector((state) => state.Wishlist);
+  const dispatch = useDispatch();
+
+  const { items, loading, error } = useSelector((state) => state.wishlist);
 
   const fullWidthStyle = {
     width: "100%",
@@ -16,6 +20,10 @@ const WishList = () => {
     padding: "0", // Fixed typo: was 'paddig'
   };
 
+  useEffect(() => {
+    dispatch(fetchWish());
+    // console.log("wislist", items, error, loading);
+  }, [dispatch]);
   return (
     <div className="wishlist-1">
       <Navbar />
@@ -24,8 +32,10 @@ const WishList = () => {
       {loading ? (
         <p>loading...</p>
       ) : error ? (
-        <p>please login or some error happened</p>
-      ) : items.length > 0 ? (
+        <p className="wish-p">please login or some error happened</p>
+      ) : items.length === 0 ? (
+        <p className="wish-p">No wishlist added !</p>
+      ) : (
         <div className="wishlist-2">
           {items.map((product) => (
             <Link
@@ -38,7 +48,10 @@ const WishList = () => {
                 {product.is_bestseller && (
                   <span className="badge bestseller">Best Seller</span>
                 )}
-                <i class="fa-solid fa-xmark close-3"></i>
+                <i
+                  onClick={() => dispatch(removeWishItem(product.id))}
+                  class="fa-solid fa-xmark close-3"
+                ></i>
                 <img
                   //   src={
                   //     product.image.startsWith("http")
@@ -67,10 +80,6 @@ const WishList = () => {
             </Link>
           ))}
         </div>
-      ) : (
-        <p className="wish-p" onClick={() => setData(!data)}>
-          No wishlist added !
-        </p>
       )}
       <Footer style={fullWidthStyle} />
     </div>

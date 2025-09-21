@@ -36,7 +36,7 @@ const Navbar = () => {
   return (
     <nav
       style={{
-        paddingTop: "30px",
+        paddingTop: "20px",
         paddingBottom: "20px",
         paddingRight: "20px",
       }}
@@ -47,7 +47,7 @@ const Navbar = () => {
 
       {/* Mobile Toggle */}
       <button
-        style={{ margin: "auto", marginLeft: "10px" }}
+        style={{ margin: "auto", marginLeft: "10px", marginTop: "10px" }}
         className="navbar-toggler"
         type="button"
         onClick={toggleMenu}

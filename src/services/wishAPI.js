@@ -20,44 +20,35 @@ export const authHeaders = async () => {
   };
 };
 
-export const fetchCartAPI = async () => {
+export const fetchWishAPI = async () => {
   return await commonAPI(
     "GET",
-    `${BASE_URL}/basket-items/view-cart/`,
+    `${BASE_URL}/wishlist/`,
     "",
     await authHeaders()
   );
 };
 
-export const updateQuantityAPI = async (id, quantity) => {
-  return await commonAPI(
-    "PATCH",
-    `${BASE_URL}/basket-items/${id}/update-quantity/`,
-    { quantity },
-    authHeaders()
-  );
-};
-
-export const removeFromCartAPI = async (id) => {
-  return await commonAPI(
-    "DELETE",
-    `${BASE_URL}/basket-items/${id}/remove-from-cart/`,
-    "",
-    authHeaders()
-  );
-};
-
-export const addProductToCartAPI = async (productId, quantity = 1) => {
+export const addProductToWishAPI = async (productId) => {
   const token = sessionStorage.getItem("access_token");
   if (!token) {
-    throw new Error("Please login to add product to cart");
+    throw new Error("Please login to add product to wishlistt");
   }
 
-  const url = `${CART_URL}/cart/${productId}/add-to-cart/`;
+  const url = `${CART_URL}/wishlist/${productId}/add_to_wishlist/`;
   const headers = {
     Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
   };
 
   return await commonAPI("POST", url, "", headers);
+};
+
+export const removeWishAPI = async (id) => {
+  return await commonAPI(
+    "DELETE",
+    `${BASE_URL}/wishlist/${id}/remove_from_wishlist/`,
+    "",
+    authHeaders()
+  );
 };

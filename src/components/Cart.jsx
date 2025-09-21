@@ -61,9 +61,7 @@ export default function Cart({ isOpen, toggleCart }) {
               </ul>
               <div className="mb-3">
                 <span>Cart Total</span>
-                <span className="float-right">
-                  ₹{totalPrice.toFixed(2)}
-                </span>
+                <span className="float-right">₹{totalPrice.toFixed(2)}</span>
               </div>
               <div className="text-center">
                 <Link

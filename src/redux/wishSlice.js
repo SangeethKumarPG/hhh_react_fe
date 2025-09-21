@@ -1,34 +1,33 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  fetchCartAPI,
-  //   updateQuantityAPI,
-  removeFromCartAPI,
-  addProductToCartAPI,
-} from "../services/cartAPI";
+  fetchWishAPI,
+  removeWishAPI,
+  addProductToWishAPI,
+} from "../services/wishAPI";
 import { toast } from "react-toastify";
 
 export const addToWishThunk = createAsyncThunk(
-  "cart/addToCart",
-  async ({ productId, quantity }, { rejectWithValue }) => {
+  "wishlist/addToWish",
+  async ({ productId }, { rejectWithValue }) => {
     try {
-      const response = await addProductToCartAPI(productId, quantity);
+      const response = await addProductToWishAPI(productId);
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || "Failed to add product to cart"
+        error.response?.data || "Failed to add product to wishlist"
       );
     }
   }
 );
 
 export const fetchWish = createAsyncThunk(
-  "cart/fetchCart",
+  "wishlist/fetchWish",
   async (_, thunkAPI) => {
     try {
-      const response = await fetchCartAPI();
+      const response = await fetchWishAPI();
       if (response.status === 200) return response.data;
       return thunkAPI.rejectWithValue(
-        response.response?.data || "Failed to fetch cart"
+        response.response?.data || "Failed to fetch wishlist"
       );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -37,13 +36,13 @@ export const fetchWish = createAsyncThunk(
 );
 
 export const removeWishItem = createAsyncThunk(
-  "cart/removeItem",
+  "wishlist/removeWishItem",
   async (id, thunkAPI) => {
     try {
-      const response = await removeFromCartAPI(id);
+      const response = await removeWishAPI(id);
       if (response.status === 204) return id;
       return thunkAPI.rejectWithValue(
-        response.response?.data || "Failed to remove item"
+        response.response?.data || "Failed to remove wishlist item"
       );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -67,14 +66,15 @@ const wishSlice = createSlice({
       })
       .addCase(addToWishThunk.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = action.payload;
-        toast.success("wishlist item added");
+        state.items = [...state.items, action.payload];
+        toast.success("Wishlist item added");
       })
-      .addCase(removeWishItem.error, (state, action) => {
+      .addCase(addToWishThunk.rejected, (state, action) => {
         state.loading = false;
-        state.items = action.payload;
+        state.error = action.payload;
         toast.error(action.payload);
       });
+
     builder
       .addCase(removeWishItem.pending, (state) => {
         state.loading = true;
@@ -82,14 +82,15 @@ const wishSlice = createSlice({
       })
       .addCase(removeWishItem.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = action.payload;
-        toast.success("wishlist item removed");
+        state.items = state.items.filter((item) => item.id !== action.payload);
+        toast.success("Wishlist item removed");
       })
-      .addCase(removeWishItem.error, (state, action) => {
+      .addCase(removeWishItem.rejected, (state, action) => {
         state.loading = false;
-        state.items = action.payload;
+        state.error = action.payload;
         toast.error(action.payload);
       });
+
     builder
       .addCase(fetchWish.pending, (state) => {
         state.loading = true;
@@ -98,12 +99,12 @@ const wishSlice = createSlice({
       .addCase(fetchWish.fulfilled, (state, action) => {
         state.loading = false;
         state.items = action.payload;
-        toast.success("items fetched");
+        toast.success("Wishlist items fetched");
       })
-      .addCase(fetchWish.error, (state, action) => {
+      .addCase(fetchWish.rejected, (state, action) => {
         state.loading = false;
-        state.items = action.payload;
-        toast.error(action.payload);
+        state.error = action.payload;
+        toast.error("some error happened");
       });
   },
 });
