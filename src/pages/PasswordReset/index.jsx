@@ -26,6 +26,7 @@ const PasswordReset = () => {
 
   //------------------------------------------ request OTP
   const submitMail = async () => {
+    // toast.done("check your Email");
     try {
       const response = await axios.post(`${BASE_URL}/forgot-password/`, {
         email: collect.email,
@@ -116,7 +117,11 @@ const PasswordReset = () => {
             <button className="pass-button" onClick={submitMail}>
               Get OTP
             </button>
-            <button className="pass-button" onClick={submitOTP}>
+            <button
+              style={{ backgroundColor: "red" }}
+              className="pass-button"
+              onClick={submitOTP}
+            >
               Verify
             </button>
           </div>

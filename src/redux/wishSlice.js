@@ -40,7 +40,8 @@ export const removeWishItem = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await removeWishAPI(id);
-      if (response.status === 204) return id;
+      console.log("remove res", response);
+      if (response.status === 200) return id;
       return thunkAPI.rejectWithValue(
         response.response?.data || "Failed to remove wishlist item"
       );

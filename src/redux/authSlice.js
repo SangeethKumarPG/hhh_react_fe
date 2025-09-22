@@ -66,7 +66,7 @@ const authSlice = createSlice({
       .addCase(signupUser.pending, (state) => {
         state.loading = true;
         state.error = null;
-        toast.success("Registration Successfull");
+        // toast.success("Registration Successfull");
       })
       .addCase(signupUser.fulfilled, (state, action) => {
         state.loading = false;
@@ -75,7 +75,7 @@ const authSlice = createSlice({
       .addCase(signupUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-        toast.error(action.payload);
+        toast.error(action.payload || "Email already registered");
       })
 
       .addCase(loginUser.pending, (state) => {
@@ -92,7 +92,7 @@ const authSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-        toast.error(action.payload);
+        // toast.error(action.payload);
       });
   },
 });

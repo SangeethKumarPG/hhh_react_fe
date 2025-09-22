@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProductDetails,
@@ -18,20 +18,31 @@ const ProductDetailsPage = () => {
   const { product, media, loading, error } = useSelector(
     (state) => state.productDetails
   );
+  const { items: products } = useSelector((state) => state.products);
   const [selectedMedia, setSelectedMedia] = useState(null);
+  const [qnty, setQuantity] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetchProductDetails(id));
     dispatch(fetchProductMedia(id));
   }, [dispatch, id]);
 
+  const setQnty = (e) => {
+    setQuantity(e.target.value);
+  };
+
   useEffect(() => {
     if (media.length > 0) {
       setSelectedMedia(media[0]);
     }
   }, [media]);
+
+  useEffect(() => {
+    console.log("quaaant", qnty);
+  }, [qnty]);
+
   const handleBuyNow = (productId) => {
-    dispatch(buyNowThunk({ productId, quantity: 1 }))
+    dispatch(buyNowThunk({ productId, quantity: qnty }))
       .unwrap()
       .then(() => {
         navigate("/checkout");
@@ -54,6 +65,7 @@ const ProductDetailsPage = () => {
     dispatch(addToWishThunk({ productId }));
   };
 
+  console.log("ijkdhf", products);
   return (
     <>
       <Navbar />
@@ -102,7 +114,14 @@ const ProductDetailsPage = () => {
 
             <div className="quantity-section">
               <label htmlFor="quantity">Quantity:</label>
-              <input type="number" id="quantity" min="1" defaultValue="1" />
+              <input
+                type="number"
+                id="quantity"
+                onChange={setQnty}
+                min="1"
+                max="5"
+                defaultValue="1"
+              />
             </div>
 
             <div className="action-buttons">
@@ -179,24 +198,66 @@ const ProductDetailsPage = () => {
         {/* Recommendations */}
         <div className="recommend">
           <h2>You may also like</h2>
-          <div className="recommendations">
-            <div className="item">
-              <img src="/images/collection/product1.png" alt="Related" />
-              <p>Silver Crystal Car Perfume</p>
+          {products.length === 0 ? (
+            <div className="recommendations">
+              <div className="item">
+                <img src="/images/collection/product1.png" alt="Related" />
+                <p>Silver Crystal Car Perfume</p>
+              </div>
+              <div className="item">
+                <img src="/images/collection/product2.png" alt="Related" />
+                <p>Spirit Spray Air Perfume</p>
+              </div>
+              <div className="item">
+                <img src="/images/collection/product2.png" alt="Related" />
+                <p>Spirit Spray Air Perfume</p>
+              </div>
+              <div className="item">
+                <img src="/images/collection/product2.png" alt="Related" />
+                <p>Spirit Spray Air Perfume</p>
+              </div>
             </div>
-            <div className="item">
-              <img src="/images/collection/product2.png" alt="Related" />
-              <p>Spirit Spray Air Perfume</p>
+          ) : (
+            <div className="recommendations-2">
+              {products.slice(0, 3).map((product) => (
+                <Link
+                  key={product.id}
+                  to={`/product/${product.id}`}
+                  className="product-card-link"
+                >
+                  <div className="product-card">
+                    {product.is_sale && (
+                      <span className="badge sale">Sale</span>
+                    )}
+                    {product.is_bestseller && (
+                      <span className="badge bestseller">Best Seller</span>
+                    )}
+                    <img
+                      src={
+                        product.image.startsWith("http")
+                          ? product.image
+                          : "http://127.0.0.1:8000/" + product.image
+                      }
+                      alt={product.name}
+                      className="product-image"
+                    />
+                    <div className="product-details">
+                      <p className="brand">{product.brand || "No Brand"}</p>
+                      {/* <h4 className="product-name">{product.name}</h4> */}
+                      <p className="price">
+                        {product.old_price && (
+                          <span className="old-price">
+                            ₹ {product.old_price}
+                          </span>
+                        )}
+                        <span className="new-price">₹ {product.price}</span>
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}{" "}
             </div>
-            <div className="item">
-              <img src="/images/collection/product2.png" alt="Related" />
-              <p>Spirit Spray Air Perfume</p>
-            </div>
-            <div className="item">
-              <img src="/images/collection/product2.png" alt="Related" />
-              <p>Spirit Spray Air Perfume</p>
-            </div>
-          </div>
+          )}
         </div>
       </div>
       <Footer />

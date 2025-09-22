@@ -22,8 +22,10 @@ const WishList = () => {
 
   useEffect(() => {
     dispatch(fetchWish());
-    // console.log("wislist", items, error, loading);
   }, [dispatch]);
+  useEffect(() => {
+    console.log("wislist", items);
+  }, [items]);
   return (
     <div className="wishlist-1">
       <Navbar />
@@ -32,7 +34,7 @@ const WishList = () => {
       {loading ? (
         <p>loading...</p>
       ) : error ? (
-        <p className="wish-p">please login or some error happened</p>
+        <p className="wish-p">please login or something went wrong</p>
       ) : items.length === 0 ? (
         <p className="wish-p">No wishlist added !</p>
       ) : (
@@ -53,27 +55,25 @@ const WishList = () => {
                   class="fa-solid fa-xmark close-3"
                 ></i>
                 <img
-                  //   src={
-                  //     product.image.startsWith("http")
-                  //       ? product.image
-                  //       : "http://127.0.0.1:8000/" + product.image
-                  //   }
-                  src="/src/assets/images/collection/product1.png"
+                  src={
+                    product.image
+                      ? product.image
+                      : "http://127.0.0.1:8000/" + product.image
+                  }
+                  // src="/src/assets/images/collection/product1.png"
                   alt={product.name}
                   className="product-image"
                 />
                 <div className="product-details">
-                  <p className="brand">{product.brand || "No Brand"} Vanilla</p>
-                  <h4 className="product-name">
-                    {product.name} HHH Car Perfume
-                  </h4>
+                  <p className="brand">{product.brand || "No Brand"}</p>
+                  <h4 className="product-name">{product.product_name}</h4>
                   <p className="price">
                     {product.old_price && (
                       <span className="old-price">
                         ₹ {product.old_price} 200
                       </span>
                     )}
-                    <span className="new-price">₹ {product.price} 250</span>
+                    <span className="new-price">₹ {product.product_price}</span>
                   </p>
                 </div>
               </div>
