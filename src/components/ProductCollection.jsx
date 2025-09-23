@@ -56,7 +56,9 @@ const ProductCollection = () => {
   const updateQuantity = (productId, delta) => {
     setQuantities((prev) => {
       const newQty = Math.max(1, (prev[productId] || 1) + delta);
-      return { ...prev, [productId]: newQty };
+      if (newQty <= 5) {
+        return { ...prev, [productId]: newQty };
+      } else return { ...prev, [productId]: 5 };
     });
   };
 
@@ -102,10 +104,19 @@ const ProductCollection = () => {
                   <p className="card-text">{product.description}</p>
 
                   <div className="d-flex justify-content-center align-items-center mb-3 gap-3">
-                    <select className="form-select form-select-sm w-auto custom-select">
+                    {/* <select className="form-select form-select-sm w-auto custom-select">
                       <option value="50">50 ml</option>
                       <option value="100">100 ml</option>
-                    </select>
+                    </select>   */}
+                    <div
+                      style={{
+                        color: "gray",
+                        textDecorationLine: "line-through",
+                      }}
+                      className="fw-bold card-text price-text"
+                    >
+                      ₹ {product.price - 50}.00
+                    </div>
                     {/* <div className="fw-bold card-text price-text">₹ 200</div> */}
                     <div className="fw-bold card-text price-text">
                       ₹ {product.price}

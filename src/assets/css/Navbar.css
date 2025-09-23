@@ -57,6 +57,9 @@
   /* background-color: antiquewhite; */
 }
 
+.fff .nav-item:hover {
+  color: red;
+}
 /* Cart wrapper styling */
 .cart-wrapper {
   position: absolute;

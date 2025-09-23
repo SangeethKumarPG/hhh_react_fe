@@ -27,16 +27,29 @@ const SearchArea = () => {
     navigate(`/product/${product.id}`);
   };
 
+  useEffect(() => {}, [filtered]);
+
   return (
     <div className="search-area-10">
       <div className="search-area-11">
+        <i
+          style={{
+            backgroundColor: "white",
+            padding: "18px 35px 17px 20px",
+            borderRadius: "10px 0px 0px 10px",
+            color: "grey",
+            border: "1px solid rgb(194, 194, 194)",
+            borderRight: "1px solid white",
+          }}
+          className="fa-solid fa-magnifying-glass"
+        ></i>
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           type="text"
           placeholder="Search here 'hhh car perfume'"
         />
-        <i
+        {/* <i
           style={{
             backgroundColor: "rgba(0, 0, 0, 1)",
             padding: "19px 35px 19px 20px",
@@ -44,7 +57,7 @@ const SearchArea = () => {
             color: "white",
           }}
           className="fa-solid fa-magnifying-glass"
-        ></i>
+        ></i> */}
       </div>
 
       {filtered.length > 0 && (

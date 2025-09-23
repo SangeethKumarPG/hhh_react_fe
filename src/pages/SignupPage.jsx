@@ -135,7 +135,7 @@ export default function SignupPage() {
           {loading ? "Signing Up..." : "Sign Up"}
         </button>
 
-        <p className="or">Or Continue With</p>
+        {/* <p className="or">Or Continue With</p>
         <div className="socials">
           <img
             src="https://img.icons8.com/color/48/000000/google-logo.png"
@@ -149,8 +149,8 @@ export default function SignupPage() {
             src="https://img.icons8.com/color/48/000000/facebook-new.png"
             alt="Facebook"
           />
-        </div>
-
+        </div> */}
+        <p></p>
         <p className="switch">
           I'm already a member? <a href="/login">Sign In</a>
         </p>

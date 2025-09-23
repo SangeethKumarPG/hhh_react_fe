@@ -77,6 +77,8 @@ export const buyNowThunk = createAsyncThunk(
         }
       }
 
+      console.log("final qnty", quantity);
+
       const response = await addProductToCartAPI(productId, quantity);
       return response.data;
     } catch (error) {

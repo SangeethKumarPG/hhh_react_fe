@@ -8,7 +8,6 @@ import "../assets/css/CheckoutPage.css";
 import { toast } from "react-toastify";
 import { CART_URL } from "../services/baseURL";
 
-
 const loadRazorpayScript = () => {
   return new Promise((resolve) => {
     const script = document.createElement("script");
@@ -31,14 +30,14 @@ const CheckoutPage = () => {
     pincode: "",
     shipping_address: "",
     billing_address: "",
-    notes: ""
+    notes: "",
   });
-
 
   const [paymentResponse, setPaymentResponse] = useState(null);
 
   useEffect(() => {
     dispatch(fetchCart());
+    console.log("my quantity", items);
   }, [dispatch]);
 
   const subtotal = items.reduce(
@@ -53,7 +52,9 @@ const CheckoutPage = () => {
   const handlePayment = async () => {
     const res = await loadRazorpayScript();
     if (!res) {
-      toast.error("Razorpay SDK failed to load. Check your internet connection.");
+      toast.error(
+        "Razorpay SDK failed to load. Check your internet connection."
+      );
       return;
     }
 
@@ -69,13 +70,13 @@ const CheckoutPage = () => {
           "Content-Type": "application/json",
         }
       );
-      if(response.status != 200){
+      if (response.status != 200) {
         toast.error(response.message);
         return;
       }
-      const { razorpay_order, razorpay_key_id, total_amount, order_id } = response.data;
+      const { razorpay_order, razorpay_key_id, total_amount, order_id } =
+        response.data;
 
-      
       const options = {
         key: razorpay_key_id,
         amount: razorpay_order.amount,
@@ -84,10 +85,8 @@ const CheckoutPage = () => {
         description: "Transaction",
         order_id: razorpay_order.id,
         handler: async function (res) {
-          
           setPaymentResponse(res);
 
-         
           await commonAPI("POST", `${CART_URL}payments/payment-status/`, {
             razorpay_order_id: res.razorpay_order_id,
             razorpay_payment_id: res.razorpay_payment_id,
@@ -96,7 +95,7 @@ const CheckoutPage = () => {
         },
         prefill: {
           name: formData.first_name + " " + formData.last_name,
-          email: "customer@example.com", 
+          email: "customer@example.com",
           contact: formData.phone_number,
         },
         theme: {
@@ -108,7 +107,9 @@ const CheckoutPage = () => {
       paymentObject.open();
     } catch (err) {
       console.error(err);
-      toast.error("Something went wrong while processing payment. Please login again.");
+      toast.error(
+        "Something went wrong while processing payment. Please login again."
+      );
     }
   };
 
@@ -196,7 +197,6 @@ const CheckoutPage = () => {
             </button>
           </div>
 
-          
           {paymentResponse && (
             <div className="alert alert-success mt-3">
               <h6>Payment Success!</h6>
@@ -206,7 +206,6 @@ const CheckoutPage = () => {
           )}
         </div>
 
-        
         <div className="right-section">
           <h5 className="mb-3">Order Summary</h5>
           {loading && <p>Loading cart...</p>}

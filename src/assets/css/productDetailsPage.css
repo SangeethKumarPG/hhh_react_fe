@@ -187,12 +187,24 @@
 }
 .recommendations {
   display: flex;
+  width: 100%;
   gap: 20px;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 20px;
+  /* background-color: #b39f9f; */
+}
+.recommendations-2 {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  /* background-color: #b39f9f; */
 }
 .recommendations .item {
-  flex: 1 1 200px;
+  width: 250px;
   background: #fff;
   border: 1px solid #eee;
   border-radius: 6px;
@@ -225,7 +237,8 @@
   .thumbnail-images {
     display: flex;
     margin: auto;
-    margin-left: 0px;
+    /* margin-left: 0px; */
+    justify-content: center;
     flex-direction: row;
     /* background-color: #444; */
     gap: 10px;

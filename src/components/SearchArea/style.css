@@ -11,13 +11,17 @@
 
 .search-area-11 input {
   background-color: white;
+  border-radius: 0px 10px 10px 0px;
+  border: 1px solid rgb(194, 194, 194);
+  border-left: none;
+  padding-left: 0;
 }
 
 .search-area-11 {
   display: flex;
   align-items: start;
   width: 100%;
-  gap: 5px;
+  gap: 0px;
 }
 
 .search-down {
@@ -25,7 +29,7 @@
   padding: 10px;
   border-radius: 20px;
   background-color: rgb(239, 239, 239);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.265);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.199);
   z-index: 6;
 }
 

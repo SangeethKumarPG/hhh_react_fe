@@ -21,7 +21,7 @@ const LoginPage = () => {
     if (accessToken) {
       navigate("/");
     } else if (error) {
-      toast.error(error);
+      toast.error("Invalid Email or Password");
     }
   }, [accessToken, error, navigate]);
 
@@ -107,9 +107,9 @@ const LoginPage = () => {
             {loading ? "Logging in..." : "Login"}
           </button>
 
-          {error && <p className="text-danger mt-3">{JSON.stringify(error)}</p>}
+          {error && <p className="text-danger mt-3">Invalid Credentials !</p>}
 
-          <p className="or mt-4">Or Continue With</p>
+          {/* <p className="or mt-4">Or Continue With</p>
 
           <div className="socials d-flex justify-content-center gap-3 mb-3">
             <img
@@ -124,8 +124,8 @@ const LoginPage = () => {
               src="https://img.icons8.com/color/48/000000/facebook-new.png"
               alt="Facebook"
             />
-          </div>
-
+          </div> */}
+          <p></p>
           <p className="switch">
             Need an account? <a href="/signup">Sign Up</a>
           </p>
