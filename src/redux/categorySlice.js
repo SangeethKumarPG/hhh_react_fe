@@ -27,6 +27,7 @@ const categorySlice = createSlice({
       .addCase(fetchCategories.fulfilled, (state, action) => {
         state.loading = false;
         state.items = action.payload;
+        console.log("cat", action.payload);
         // toast.success("Categories fetched successfully");
       })
       .addCase(fetchCategories.rejected, (state, action) => {

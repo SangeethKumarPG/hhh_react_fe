@@ -164,8 +164,8 @@ const Navbar = () => {
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link" to="/about">
-              About
+            <Link className="nav-link" to="/orders">
+              Orders
             </Link>
           </li>
 
@@ -184,9 +184,9 @@ const Navbar = () => {
           {/* Cart Button */}
           <li className="nav-item">
             <button
+              style={{ paddingTop: "25px" }}
               onClick={toggleCart}
               className="btn btn-light text-dark btn-sm my-md-0 nav-link px-3"
-              style={{ borderRadius: "20px" }}
             >
               <i className="ti-bag me-1"></i> Cart
             </button>
@@ -241,6 +241,10 @@ const Navbar = () => {
         style={{ paddingBottom: "10px", gap: "20px" }}
         className="order-3 navbar-right-elements d-none d-lg-flex align-items-center"
       >
+        <a href="/orders">
+          <i class="fa-solid fa-truck"></i>
+        </a>
+
         <a href="/wishlist">
           <i class="fa-regular fa-heart"></i>
         </a>

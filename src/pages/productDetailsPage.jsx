@@ -112,7 +112,7 @@ const ProductDetailsPage = () => {
             <p className="brand">{product.brand || "No Brand"}</p>
             <p className="desc">{product.description}</p>
 
-            <div className="quantity-section">
+            {/* <div className="quantity-section">
               <label htmlFor="quantity">Quantity:</label>
               <input
                 type="number"
@@ -122,9 +122,10 @@ const ProductDetailsPage = () => {
                 max="5"
                 defaultValue="1"
               />
-            </div>
+            </div> */}
+            <p>Stock Available : {product.stock ? product.stock : ""}</p>
 
-            <div className="action-buttons">
+            <div style={{ marginTop: "50px" }} className="action-buttons">
               <button
                 className="buy-now"
                 onClick={() => handleBuyNow(product.id)}
@@ -142,7 +143,7 @@ const ProductDetailsPage = () => {
                 className="add-to-cart"
                 onClick={() => handleAddToCart(product.id)}
               >
-                🛒
+                🛒+
               </button>
             </div>
           </div>
@@ -250,7 +251,7 @@ const ProductDetailsPage = () => {
                             ₹ {product.old_price}
                           </span>
                         )}
-                        <span className="new-price">₹ {product.price}</span>
+                        {/* <span className="new-price">₹ {product.price}</span> */}
                       </p>
                     </div>
                   </div>

@@ -124,7 +124,7 @@ const ProductCollection = () => {
                   </div>
 
                   <div className="d-flex justify-content-center align-items-center gap-3">
-                    <div className="btn-group">
+                    {/* <div className="btn-group">
                       <button
                         className="qty-btn"
                         onClick={() => updateQuantity(product.id, -1)}
@@ -140,8 +140,11 @@ const ProductCollection = () => {
                       >
                         +
                       </button>
-                    </div>
+                    </div> */}
                     <button
+                      style={{
+                        width: "250px",
+                      }}
                       className="add-btn"
                       onClick={() => handleAddToCart(product.id)}
                     >
