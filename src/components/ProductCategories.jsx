@@ -7,7 +7,7 @@ import PerfumeIcon3 from "../assets/images/categories/perfume bottle icon3.jpg";
 import { fetchCategories } from "../redux/categorySlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const categories = [
+const categoriess = [
   { id: 2, title: "Car perfumes", img: PerfumeIcon1 },
   { id: 3, title: "Body perfumes", img: PerfumeIcon3 },
   { id: 4, title: "Multipurpose", img: PerfumeIcon2 },
@@ -33,7 +33,7 @@ const ProductCategories = () => {
           <div className="col-lg-12 text-center">
             <h2 className="section-title">Top Categories</h2>
           </div>
-          {categories.slice(0, 3).map((cat) => (
+          {categoriess.slice(0, 3).map((cat) => (
             <div key={cat.id} className="col-lg-4 col-md-6 mb-50">
               <div className="card p-0">
                 <div className="border-bottom text-center hover-zoom-img">

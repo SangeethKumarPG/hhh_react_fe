@@ -11,6 +11,7 @@ import Footer from "../components/Footer";
 import { addToCartThunk, buyNowThunk } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { addToWishThunk } from "../redux/wishSlice";
+import { fetchProducts } from "../redux/productSlice";
 
 const ProductDetailsPage = () => {
   const { id } = useParams();
@@ -21,6 +22,7 @@ const ProductDetailsPage = () => {
   const { items: products } = useSelector((state) => state.products);
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [qnty, setQuantity] = useState(null);
+  const [filter, setFilter] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetchProductDetails(id));
@@ -39,7 +41,27 @@ const ProductDetailsPage = () => {
 
   useEffect(() => {
     console.log("quaaant", qnty);
+    // console.log("fsda", filter);
   }, [qnty]);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!product?.name) return; // safeguard
+
+    const filterDetails = products.filter((item) => {
+      if (product.name.toLowerCase().includes("body")) {
+        return item.name.toLowerCase().includes("car");
+      } else if (product.name.toLowerCase().includes("car")) {
+        return item.name.toLowerCase().includes("body");
+      }
+      return false; // fallback
+    });
+
+    setFilter(filterDetails);
+  }, [products, product]); // ✅ correct dependencies
 
   const handleBuyNow = (productId) => {
     dispatch(buyNowThunk({ productId, quantity: qnty }))
@@ -65,7 +87,6 @@ const ProductDetailsPage = () => {
     dispatch(addToWishThunk({ productId }));
   };
 
-  console.log("ijkdhf", products);
   return (
     <>
       <Navbar />
@@ -123,7 +144,15 @@ const ProductDetailsPage = () => {
                 defaultValue="1"
               />
             </div> */}
-            <p>Stock Available : {product.stock ? product.stock : ""}</p>
+            <p>
+              {product.stock === 0 ? (
+                <span style={{ color: "red" }}>Out Of Stock</span>
+              ) : (
+                <span style={{ color: "green" }}>
+                  Available Stock : {product.stock}
+                </span>
+              )}
+            </p>
 
             <div style={{ marginTop: "50px" }} className="action-buttons">
               <button
@@ -199,7 +228,7 @@ const ProductDetailsPage = () => {
         {/* Recommendations */}
         <div className="recommend">
           <h2>You may also like</h2>
-          {products.length === 0 ? (
+          {filter.length === 0 ? (
             <div className="recommendations">
               <div className="item">
                 <img src="/images/collection/product1.png" alt="Related" />
@@ -220,7 +249,7 @@ const ProductDetailsPage = () => {
             </div>
           ) : (
             <div className="recommendations-2">
-              {products.slice(0, 3).map((product) => (
+              {filter.slice(0, 3).map((product) => (
                 <Link
                   key={product.id}
                   to={`/product/${product.id}`}
@@ -243,8 +272,8 @@ const ProductDetailsPage = () => {
                       className="product-image"
                     />
                     <div className="product-details">
-                      <p className="brand">{product.brand || "No Brand"}</p>
-                      {/* <h4 className="product-name">{product.name}</h4> */}
+                      {/* <p className="brand">{product.brand || "No Brand"}</p> */}
+                      <h4 className="product-name">{product.name}</h4>
                       <p className="price">
                         {product.old_price && (
                           <span className="old-price">

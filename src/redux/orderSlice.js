@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
+import { fetchOrderAPI } from "../services/orderAPI";
 import { toast } from "react-toastify";
-import { fetchHeroAPI } from "../services/heroAPI";
 
-export const fetchHero = createAsyncThunk(
-  "categories/fetchCategories",
+export const fetchOrders = createAsyncThunk(
+  "orders/fetchOrders",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetchHeroAPI();
+      const response = await fetchOrderAPI();
+      console.log("my orders", response);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);
@@ -15,23 +15,23 @@ export const fetchHero = createAsyncThunk(
   }
 );
 
-const heroSlice = createSlice({
+const orderSlice = createSlice({
   name: "categories",
   initialState: { items: [], loading: false, error: null },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchHero.pending, (state) => {
+      .addCase(fetchOrders.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchHero.fulfilled, (state, action) => {
+      .addCase(fetchOrders.fulfilled, (state, action) => {
         state.loading = false;
         state.items = action.payload;
         console.log("cat", action.payload);
         // toast.success("Categories fetched successfully");
       })
-      .addCase(fetchHero.rejected, (state, action) => {
+      .addCase(fetchOrders.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
         toast.error(action.payload);
@@ -39,4 +39,4 @@ const heroSlice = createSlice({
   },
 });
 
-export default heroSlice.reducer;
+export default orderSlice.reducer;

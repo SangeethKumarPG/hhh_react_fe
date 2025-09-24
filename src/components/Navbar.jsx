@@ -162,12 +162,19 @@ const Navbar = () => {
               </div>
             </div>
           </li>
-
-          <li className="nav-item">
-            <Link className="nav-link" to="/orders">
-              Orders
-            </Link>
-          </li>
+          {menuOpen ? (
+            <li className="nav-item">
+              <Link className="nav-link" to="/orders">
+                Orders
+              </Link>
+            </li>
+          ) : (
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
+                About
+              </Link>
+            </li>
+          )}
 
           <li className="nav-item">
             <Link className="nav-link" to="/contactus">

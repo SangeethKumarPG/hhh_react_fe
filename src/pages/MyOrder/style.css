@@ -8,6 +8,19 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
 }
+.order-11 p {
+  width: 100%;
+
+  /* background-color: #ddd; */
+  text-align: start;
+}
+.order-11 a {
+  background-color: red;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: rgb(255, 255, 255) !important;
+  font-weight: 900;
+}
 
 .order-container-h2 {
   width: 100%;
@@ -68,6 +81,7 @@
 }
 
 .step.active p {
+  text-align: center;
   font-weight: bold;
   color: #4caf50;
 }

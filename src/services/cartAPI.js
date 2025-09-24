@@ -47,7 +47,7 @@ export const removeFromCartAPI = async (id) => {
   );
 };
 
-export const addProductToCartAPI = async (productId, quantity) => {
+export const addProductToCartAPI = async (productId) => {
   const token = sessionStorage.getItem("access_token");
   if (!token) {
     throw new Error("Please login to add product to cart");
@@ -59,5 +59,5 @@ export const addProductToCartAPI = async (productId, quantity) => {
     "Content-Type": "application/json",
   };
 
-  return await commonAPI("POST", url, { quantity }, headers);
+  return await commonAPI("POST", url, "", headers);
 };
