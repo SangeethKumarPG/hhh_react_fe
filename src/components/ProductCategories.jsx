@@ -33,13 +33,13 @@ const ProductCategories = () => {
           <div className="col-lg-12 text-center">
             <h2 className="section-title">Top Categories</h2>
           </div>
-          {categoriess.slice(0, 3).map((cat) => (
+          {categories.slice(0, 3).map((cat) => (
             <div key={cat.id} className="col-lg-4 col-md-6 mb-50">
               <div className="card p-0">
                 <div className="border-bottom text-center hover-zoom-img">
                   <Link to={`/products?category=${cat.id}`}>
                     <img
-                      src={cat.img}
+                      src={cat.image}
                       className="rounded-top img-fluid w-100"
                       alt={cat.id}
                     />

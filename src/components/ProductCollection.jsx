@@ -44,6 +44,7 @@ const ProductCollection = () => {
         const res = await getProductsAPI();
         if (res?.data && res.data.length > 0) {
           setProducts(res.data.slice(0, 3));
+          console.log("oooddd", res);
         }
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -91,8 +92,8 @@ const ProductCollection = () => {
                 onClick={() => setSelected(product.id)}
               >
                 <img
-                  src={"/src/assets/images/categories/bottle.png"}
-                  // src={product?.image}
+                  // src={"/src/assets/images/categories/bottle.1 - Copy.png"}
+                  src={"http://127.0.0.1:8000/" + product.image}
                   alt={product.name}
                   className="card-img-top product-img"
                 />

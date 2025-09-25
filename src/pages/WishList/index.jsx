@@ -32,7 +32,7 @@ const WishList = () => {
 
       <h1>Your Wish List Items</h1>
       {loading ? (
-        <p>loading...</p>
+        <p className="wish-p">loading...</p>
       ) : error ? (
         <p className="wish-p">please login or something went wrong</p>
       ) : items.length === 0 ? (
@@ -56,16 +56,16 @@ const WishList = () => {
                 ></i>
                 <img
                   src={
-                    product.image
-                      ? product.image
-                      : "http://127.0.0.1:8000/" + product.image
+                    product.product_image
+                      ? product.product_image
+                      : "/src/assets/images/collection/product2.png"
                   }
                   // src="/src/assets/images/collection/product1.png"
                   alt={product.name}
                   className="product-image"
                 />
                 <div className="product-details">
-                  <p className="brand">{product.brand || "No Brand"}</p>
+                  <p className="brand">{product.brand || "Perfume"}</p>
                   <h4 className="product-name">{product.product_name}</h4>
                   <p className="price">
                     {product.old_price && (

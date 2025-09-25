@@ -67,7 +67,7 @@ const SearchArea = () => {
       {filtered.length > 0 && (
         <div className="search-down">
           <ul>
-            {filtered.map((product) => (
+            {filtered.slice(0, 7).map((product) => (
               <li
                 key={product.id}
                 onClick={() => handleSelect(product)}

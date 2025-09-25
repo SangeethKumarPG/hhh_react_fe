@@ -48,7 +48,9 @@ export default function Footer() {
           <div className="col-md-2 mb-4">
             <h5>Useful Link</h5>
             <p>Home</p>
-            <p>About Us</p>
+            <a href="/about">
+              <p>About Us</p>
+            </a>
             <p>Support</p>
             <p>Our Shop</p>
             <p>Contact Us</p>

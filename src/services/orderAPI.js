@@ -21,5 +21,10 @@ export const authHeaders = async () => {
 };
 
 export const fetchOrderAPI = async () => {
-  return await commonAPI("GET", `${BASE_URL}/orders/`, "", await authHeaders());
+  return await commonAPI(
+    "GET",
+    `${BASE_URL}/my-orders/`,
+    "",
+    await authHeaders()
+  );
 };

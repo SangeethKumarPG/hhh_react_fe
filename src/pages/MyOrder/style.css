@@ -12,7 +12,7 @@
   width: 100%;
 
   /* background-color: #ddd; */
-  text-align: start;
+  text-align: center;
 }
 .order-11 a {
   background-color: red;
@@ -21,7 +21,10 @@
   color: rgb(255, 255, 255) !important;
   font-weight: 900;
 }
-
+.order-container p {
+  /* background-color: #ddd; */
+  text-align: start;
+}
 .order-container-h2 {
   width: 100%;
   /* background-color: #af5757; */

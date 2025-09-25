@@ -53,7 +53,7 @@ const OrderTracking = () => {
         Track Your Order
       </h2>
       {error ? (
-        <p>Something went wrong</p>
+        <p>Please Login or Something went wrong</p>
       ) : loading ? (
         <p>loading...</p>
       ) : items.length === 0 ? (
@@ -68,18 +68,20 @@ const OrderTracking = () => {
                 <b>Order ID : </b> {i.order_id}
               </p>
               <p>
-                <b>Customer:</b> {i.first_name} {i.last_name}
+                <b>Customer:</b> {i.user.first_name} {i.user.last_name}
               </p>
               <p>
                 <b>Address:</b> {i.city} {i.pincode}
               </p>
               <p>
-                <b>Product:</b>{" "}
+                <b>Product List : </b>
                 {i.items.map((item, idx) => {
-                  return <p>{item.product && item.product.name}</p>;
+                  return <>{item.product_name}</>;
                 })}
               </p>
-
+              <p>
+                <b> Amount : </b> {i.total_amount}rs
+              </p>
               <div className="steps-container">
                 {steps.map((step, index) => {
                   const stepIndex = steps.indexOf(i.status);

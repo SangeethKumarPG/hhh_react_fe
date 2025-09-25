@@ -34,7 +34,11 @@ const slides = [
 const Hero = () => {
   const dispatch = useDispatch();
 
-  const { items, loading, error } = useSelector((state) => state.hero);
+  const { items, loading } = useSelector((state) => state.hero);
+
+  useEffect(() => {
+    console.log("jaamm", items);
+  }, [items]);
 
   useEffect(() => {
     dispatch(fetchHero());
@@ -48,97 +52,194 @@ const Hero = () => {
       data-bs-interval="3000"
     >
       <div className="carousel-inner">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`carousel-item ${index === 0 ? "active" : ""}`}
-          >
-            <div className="container">
-              <div className="row align-items-center">
-                {/* LEFT TEXT */}
-                <div className="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
-                  <h3
-                    className="hero-text animate__animated animate__fadeInDown"
-                    style={{
-                      fontSize: "24px",
-                      animationDelay: "0s",
-                      animationDuration: "0.5s",
-                    }}
-                  >
-                    {slide.smallText}
-                  </h3>
-                  <h1
-                    className="hero-text animate__animated animate__fadeInDown"
-                    style={{
-                      fontSize: "44px",
-                      animationDelay: "0.2s",
-                      animationDuration: "0.5s",
-                    }}
-                  >
-                    {slide.title}
-                  </h1>
-                  <h4
-                    className="mb-4 hero-text animate__animated animate__fadeInDown"
-                    style={{
-                      fontSize: "16px",
-                      animationDelay: "0.4s",
-                      animationDuration: "0.5s",
-                    }}
-                  >
-                    {slide.subtitle}
-                  </h4>
-                  <p
-                    className="mb-4 hero-text animate__animated animate__fadeInDown"
-                    style={{
-                      animationDelay: "0.6s",
-                      animationDuration: "0.5s",
-                    }}
-                  >
-                    {slide.description}
-                  </p>
-                  <Link
-                    to={slide.primaryBtn.link}
-                    className="btn btn-primary me-2 hero-text animate__animated animate__fadeInDown"
-                    style={{
-                      animationDelay: "0.8s",
-                      animationDuration: "0.5s",
-                    }}
-                  >
-                    {slide.primaryBtn.text}
-                  </Link>
-                </div>
+        {loading ? (
+          <p>loading...</p>
+        ) : items ? (
+          items.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`carousel-item ${index === 0 ? "active" : ""}`}
+            >
+              <div className="container">
+                <div className="row align-items-center">
+                  {/* LEFT TEXT */}
+                  <div className="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
+                    <h3
+                      className="hero-text animate__animated animate__fadeInDown"
+                      style={{
+                        fontSize: "24px",
+                        animationDelay: "0s",
+                        animationDuration: "0.5s",
+                      }}
+                    >
+                      {slide.smallText}
+                    </h3>
+                    <h1
+                      className="hero-text animate__animated animate__fadeInDown"
+                      style={{
+                        fontSize: "44px",
+                        animationDelay: "0.2s",
+                        animationDuration: "0.5s",
+                      }}
+                    >
+                      {slide.title}
+                    </h1>
+                    <h4
+                      className="mb-4 hero-text animate__animated animate__fadeInDown"
+                      style={{
+                        fontSize: "16px",
+                        animationDelay: "0.4s",
+                        animationDuration: "0.5s",
+                      }}
+                    >
+                      {slide.subtitle}
+                    </h4>
+                    <p
+                      className="mb-4 hero-text animate__animated animate__fadeInDown"
+                      style={{
+                        animationDelay: "0.6s",
+                        animationDuration: "0.5s",
+                      }}
+                    >
+                      {slide.description}
+                    </p>
+                    <Link
+                      to={"/products"}
+                      className="btn btn-primary me-2 hero-text animate__animated animate__fadeInDown"
+                      style={{
+                        animationDelay: "0.8s",
+                        animationDuration: "0.5s",
+                      }}
+                    >
+                      Shop Now
+                    </Link>
+                  </div>
 
-                {/* RIGHT IMAGES */}
-                <div className="col-lg-6 text-center">
-                  <div className="bg-letter position-relative">
-                    {/* Background */}
-                    <img
-                      src={HeroBg}
-                      alt="HHH Logo Background"
-                      className="img-fluid animate__animated animate__fadeInRight"
-                      style={{
-                        height: "500px",
-                        animationDelay: "1.2s",
-                        animationDuration: "0.5s",
-                      }}
-                    />
-                    {/* Foreground Bottle */}
-                    <img
-                      src={HeroBottle}
-                      alt="Perfume"
-                      className="img-fluid position-absolute top-50 start-50 translate-middle animate__animated animate__fadeInRight"
-                      style={{
-                        maxHeight: "400px",
-                        animationDelay: "1s",
-                        animationDuration: "0.5s",
-                      }}
-                    />
+                  {/* RIGHT IMAGES */}
+                  <div className="col-lg-6 text-center">
+                    <div className="bg-letter position-relative">
+                      {/* Background */}
+                      <img
+                        src={HeroBg}
+                        alt="HHH Logo Background"
+                        className="img-fluid animate__animated animate__fadeInRight"
+                        style={{
+                          height: "500px",
+                          animationDelay: "1.2s",
+                          animationDuration: "0.5s",
+                        }}
+                      />
+                      {/* Foreground Bottle */}
+                      <img
+                        src={slide.image}
+                        alt="Perfume"
+                        className="img-fluid position-absolute top-50 start-50 translate-middle animate__animated animate__fadeInRight"
+                        style={{
+                          maxHeight: "400px",
+                          animationDelay: "1s",
+                          animationDuration: "0.5s",
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          //////////////////////////////////////////////////////
+          slides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`carousel-item ${index === 0 ? "active" : ""}`}
+            >
+              <div className="container">
+                <div className="row align-items-center">
+                  {/* LEFT TEXT */}
+                  <div className="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
+                    <h3
+                      className="hero-text animate__animated animate__fadeInDown"
+                      style={{
+                        fontSize: "24px",
+                        animationDelay: "0s",
+                        animationDuration: "0.5s",
+                      }}
+                    >
+                      {slide.smallText}
+                    </h3>
+                    <h1
+                      className="hero-text animate__animated animate__fadeInDown"
+                      style={{
+                        fontSize: "44px",
+                        animationDelay: "0.2s",
+                        animationDuration: "0.5s",
+                      }}
+                    >
+                      {slide.title}
+                    </h1>
+                    <h4
+                      className="mb-4 hero-text animate__animated animate__fadeInDown"
+                      style={{
+                        fontSize: "16px",
+                        animationDelay: "0.4s",
+                        animationDuration: "0.5s",
+                      }}
+                    >
+                      {slide.subtitle}
+                    </h4>
+                    <p
+                      className="mb-4 hero-text animate__animated animate__fadeInDown"
+                      style={{
+                        animationDelay: "0.6s",
+                        animationDuration: "0.5s",
+                      }}
+                    >
+                      {slide.description}
+                    </p>
+                    <Link
+                      to={slide.primaryBtn.link}
+                      className="btn btn-primary me-2 hero-text animate__animated animate__fadeInDown"
+                      style={{
+                        animationDelay: "0.8s",
+                        animationDuration: "0.5s",
+                      }}
+                    >
+                      {slide.primaryBtn.text}
+                    </Link>
+                  </div>
+
+                  {/* RIGHT IMAGES */}
+                  <div className="col-lg-6 text-center">
+                    <div className="bg-letter position-relative">
+                      {/* Background */}
+                      <img
+                        src={HeroBg}
+                        alt="HHH Logo Background"
+                        className="img-fluid animate__animated animate__fadeInRight"
+                        style={{
+                          height: "500px",
+                          animationDelay: "1.2s",
+                          animationDuration: "0.5s",
+                        }}
+                      />
+                      {/* Foreground Bottle */}
+                      <img
+                        src={HeroBottle}
+                        alt="Perfume"
+                        className="img-fluid position-absolute top-50 start-50 translate-middle animate__animated animate__fadeInRight"
+                        style={{
+                          maxHeight: "400px",
+                          animationDelay: "1s",
+                          animationDuration: "0.5s",
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        )}
       </div>
 
       {/* Controls */}

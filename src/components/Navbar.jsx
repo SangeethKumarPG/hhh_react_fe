@@ -5,9 +5,10 @@ import logo from "../assets/images/HHH logo.png";
 import product1 from "../assets/images/collection/product1.png";
 import product2 from "../assets/images/collection/product2.png";
 import bottle1 from "../assets/images/categories/bottle.1.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/authSlice";
 import Cart from "./Cart";
+import { fetchCategories } from "../redux/categorySlice";
 
 const Navbar = () => {
   const [cartOpen, setCartOpen] = useState(false);
@@ -26,6 +27,12 @@ const Navbar = () => {
     const token = sessionStorage.getItem("access_token");
     setIsAuthenticated(!!token);
   }, []);
+
+  const { items: categories } = useSelector((state) => state.categories);
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -107,59 +114,64 @@ const Navbar = () => {
             <div
               className={`dropdown-menu mega-menu ${megaOpen ? "show" : ""}`}
             >
-              <div className="row">
-                <div
-                  style={{ marginTop: "20px" }}
-                  className="col-md-4 text-center"
-                >
-                  <img
-                    src={product1}
-                    alt="Car Perfumes"
-                    className="img-fluid mb-2"
-                  />
-                  <h6>Car Perfumes</h6>
-                  <Link className="dropdown-item" to="#">
-                    Air Fresheners
-                  </Link>
-                  <Link className="dropdown-item" to="#">
-                    Fragrance Diffusers
-                  </Link>
-                </div>
-                <div
-                  style={{ marginTop: "20px" }}
-                  className="col-md-4 text-center"
-                >
-                  <img
-                    src={bottle1}
-                    alt="Body Perfumes"
-                    className="img-fluid mb-2"
-                  />
-                  <h6>Body Perfumes</h6>
-                  <Link className="dropdown-item" to="#">
-                    Air Fresheners
-                  </Link>
-                  <Link className="dropdown-item" to="#">
-                    Fragrance Diffusers
-                  </Link>
-                </div>
-                <div
-                  style={{ marginTop: "20px" }}
-                  className="col-md-4 text-center"
-                >
-                  <img
-                    src={product2}
-                    alt="Multipurpose"
-                    className="img-fluid mb-2"
-                  />
-                  <h6>Multipurpose</h6>
-                  <Link className="dropdown-item" to="#">
-                    Air Fresheners
-                  </Link>
-                  <Link className="dropdown-item" to="#">
-                    Fragrance Diffusers
-                  </Link>
-                </div>
-              </div>
+              {categories.slice(0, 3).map((i, idx) => {
+                return (
+                  <div className="row">
+                    <div
+                      style={{ marginTop: "20px" }}
+                      className="col-md-4 text-center"
+                    >
+                      <img
+                        onClick={() => (window.location.href = "/products")}
+                        src={i.image}
+                        alt="Car Perfumes"
+                        className="img-fluid mb-2"
+                      />
+                      <h6>Car Perfumes</h6>
+                      <Link className="dropdown-item" to="#">
+                        Air Fresheners
+                      </Link>
+                      <Link className="dropdown-item" to="#">
+                        Fragrance Diffusers
+                      </Link>
+                    </div>
+                    {/* <div
+                      style={{ marginTop: "20px" }}
+                      className="col-md-4 text-center"
+                    >
+                      <img
+                        src={bottle1}
+                        alt="Body Perfumes"
+                        className="img-fluid mb-2"
+                      />
+                      <h6>Body Perfumes</h6>
+                      <Link className="dropdown-item" to="#">
+                        Air Fresheners
+                      </Link>
+                      <Link className="dropdown-item" to="#">
+                        Fragrance Diffusers
+                      </Link>
+                    </div> */}
+                    {/* <div
+                      style={{ marginTop: "20px" }}
+                      className="col-md-4 text-center"
+                    >
+                      <img
+                        src={product2}
+                        alt="Multipurpose"
+                        className="img-fluid mb-2"
+                      />
+                      <h6>Multipurpose</h6>
+                      <Link className="dropdown-item" to="#">
+                        Air Fresheners
+                      </Link>
+                      <Link className="dropdown-item" to="#">
+                        Fragrance Diffusers
+                      </Link>
+                    </div> */}
+                  </div>
+                );
+              })}
             </div>
           </li>
           {menuOpen ? (

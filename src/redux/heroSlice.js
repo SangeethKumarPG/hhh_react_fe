@@ -1,10 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
 import { toast } from "react-toastify";
 import { fetchHeroAPI } from "../services/heroAPI";
 
 export const fetchHero = createAsyncThunk(
-  "categories/fetchCategories",
+  "hero/fetchHero",
   async (_, { rejectWithValue }) => {
     try {
       const response = await fetchHeroAPI();
