@@ -7,6 +7,7 @@ import "../assets/css/ProductsPage.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SearchArea from "../components/SearchArea";
+import { addToCartThunk } from "../redux/cartSlice";
 
 const ProductsPage = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,10 @@ const ProductsPage = () => {
     error,
   } = useSelector((state) => state.products);
   const [selectedCategory, setSelectedCategory] = useState("");
+
+  const handleAddToCart = (productId) => {
+    dispatch(addToCartThunk({ productId }));
+  };
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -85,9 +90,11 @@ const ProductsPage = () => {
                       ? product.image
                       : "http://127.0.0.1:8000/" + product.image
                   }
+                  // src="/src/assets/images/categories/bottle.1 - Copy.png"
                   alt={product.name}
                   className="product-image"
                 />
+
                 <div className="product-details">
                   <p className="brand">{product.brand || "No Brand"}</p>
                   <h4 className="product-name">{product.name}</h4>
@@ -97,6 +104,16 @@ const ProductsPage = () => {
                     )}
                     <span className="new-price">₹ {product.price}</span>
                   </p>
+                  <button
+                    style={{
+                      width: "250px",
+                      zIndex: "2",
+                    }}
+                    className="add-btn"
+                    onClick={() => handleAddToCart(product.id)}
+                  >
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             </Link>

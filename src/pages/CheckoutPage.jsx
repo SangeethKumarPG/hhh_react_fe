@@ -50,6 +50,17 @@ const CheckoutPage = () => {
   };
 
   const handlePayment = async () => {
+    if (
+      !formData.first_name ||
+      !formData.last_name ||
+      !formData.shipping_address ||
+      !formData.city ||
+      !formData.phone_number ||
+      !formData.pincode
+    ) {
+      return toast.error("please fill all fields");
+    }
+
     const res = await loadRazorpayScript();
     if (!res) {
       toast.error(

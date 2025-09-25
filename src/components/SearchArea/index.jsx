@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { fetchProducts } from "../../redux/productSlice";
 import "./style.css";
 
 const SearchArea = () => {
   const [query, setQuery] = useState("");
   const [filtered, setFiltered] = useState([]);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { items: products } = useSelector((state) => state.products);
@@ -27,7 +29,9 @@ const SearchArea = () => {
     navigate(`/product/${product.id}`);
   };
 
-  useEffect(() => {}, [filtered]);
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   return (
     <div className="search-area-10">
@@ -63,7 +67,7 @@ const SearchArea = () => {
       {filtered.length > 0 && (
         <div className="search-down">
           <ul>
-            {filtered.map((product) => (
+            {filtered.slice(0, 7).map((product) => (
               <li
                 key={product.id}
                 onClick={() => handleSelect(product)}
