@@ -129,7 +129,7 @@ const Navbar = () => {
                         alt="Car Perfumes"
                         className="img-fluid mb-2"
                       />
-                      <h6>Car Perfumes</h6>
+                      <h6>{i.name}</h6>
                       <Link className="dropdown-item" to="#">
                         Air Fresheners
                       </Link>

@@ -15,7 +15,7 @@ export const addToCartThunk = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || "Failed to add product to cart"
+        error.response?.data || "Please login or something went wrong"
       );
     }
   }
@@ -28,7 +28,7 @@ export const fetchCart = createAsyncThunk(
       const response = await fetchCartAPI();
       if (response.status === 200) return response.data;
       return thunkAPI.rejectWithValue(
-        response.response?.data || "Failed to fetch cart"
+        response.response?.data || "Please login or something went wrong"
       );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -43,7 +43,7 @@ export const updateCartQuantity = createAsyncThunk(
       const response = await updateQuantityAPI(id, quantity);
       if (response.status === 200) return response.data;
       return thunkAPI.rejectWithValue(
-        response.response?.data || "Failed to update quantity"
+        response.response?.data || "Please login or something went wrong"
       );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -58,7 +58,7 @@ export const removeCartItem = createAsyncThunk(
       const response = await removeFromCartAPI(id);
       if (response.status === 204) return id;
       return thunkAPI.rejectWithValue(
-        response.response?.data || "Failed to remove item"
+        response.response?.data || "Please login or something went wrong"
       );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -83,7 +83,7 @@ export const buyNowThunk = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || "Failed to process buy now"
+        error.response?.data || "Please login or something went wrong"
       );
     }
   }
