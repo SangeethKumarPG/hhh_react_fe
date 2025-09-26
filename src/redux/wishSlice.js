@@ -14,7 +14,7 @@ export const addToWishThunk = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || "Failed to add product to wishlist"
+        error.response?.data || "Please login or something went wrong"
       );
     }
   }
@@ -27,7 +27,7 @@ export const fetchWish = createAsyncThunk(
       const response = await fetchWishAPI();
       if (response.status === 200) return response.data;
       return thunkAPI.rejectWithValue(
-        response.response?.data || "Failed to fetch wishlist"
+        response.response?.data || "Please login or something went wrong"
       );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -43,7 +43,7 @@ export const removeWishItem = createAsyncThunk(
       console.log("remove res", response);
       if (response.status === 200) return id;
       return thunkAPI.rejectWithValue(
-        response.response?.data || "Failed to remove wishlist item"
+        response.response?.data || "Please login or something went wrong"
       );
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
