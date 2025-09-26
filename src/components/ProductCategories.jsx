@@ -23,7 +23,7 @@ const ProductCategories = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("haa", categories);
+    // console.log("haa", categories);
   }, [categories]);
 
   return (

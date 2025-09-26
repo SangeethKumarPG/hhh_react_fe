@@ -44,7 +44,7 @@ const ProductCollection = () => {
         const res = await getProductsAPI();
         if (res?.data && res.data.length > 0) {
           setProducts(res.data.slice(0, 3));
-          console.log("oooddd", res);
+          // console.log("oooddd", res);
         }
       } catch (error) {
         console.error("Error fetching products:", error);

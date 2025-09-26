@@ -24,7 +24,7 @@ const WishList = () => {
     dispatch(fetchWish());
   }, [dispatch]);
   useEffect(() => {
-    console.log("wislist", items);
+    // console.log("wislist", items);
   }, [items]);
   return (
     <div className="wishlist-1">
