@@ -122,7 +122,9 @@ const Navbar = () => {
                       className="col-md-4 text-center"
                     >
                       <img
-                        onClick={() => (window.location.href = "/products")}
+                        onClick={() =>
+                          (window.location.href = `/products?category=${i.id}`)
+                        }
                         src={i.image}
                         alt="Car Perfumes"
                         className="img-fluid mb-2"
