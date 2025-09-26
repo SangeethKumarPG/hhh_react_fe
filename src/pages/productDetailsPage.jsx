@@ -40,7 +40,7 @@ const ProductDetailsPage = () => {
   }, [media]);
 
   useEffect(() => {
-    console.log("quaaant", qnty);
+    // console.log("quaaant", qnty);
     // console.log("fsda", filter);
   }, [qnty]);
 
@@ -230,22 +230,30 @@ const ProductDetailsPage = () => {
           <h2>You may also like</h2>
           {filter.length === 0 ? (
             <div className="recommendations">
-              <div className="item">
-                <img src="/images/collection/product1.png" alt="Related" />
-                <p>Silver Crystal Car Perfume</p>
-              </div>
-              <div className="item">
-                <img src="/images/collection/product2.png" alt="Related" />
-                <p>Spirit Spray Air Perfume</p>
-              </div>
-              <div className="item">
-                <img src="/images/collection/product2.png" alt="Related" />
-                <p>Spirit Spray Air Perfume</p>
-              </div>
-              <div className="item">
-                <img src="/images/collection/product2.png" alt="Related" />
-                <p>Spirit Spray Air Perfume</p>
-              </div>
+              <a href="/products?category=2">
+                <div className="item">
+                  <img src="/images/collection/product1.png" alt="Related" />
+                  <p>Silver Crystal Car Perfume</p>
+                </div>
+              </a>
+              <a href="/products?category=3">
+                <div className="item">
+                  <img src="/images/collection/product2.png" alt="Related" />
+                  <p>Spirit Spray Body Perfume</p>
+                </div>
+              </a>
+              <a href="/products?category=2">
+                <div className="item">
+                  <img src="/images/collection/product1.png" alt="Related" />
+                  <p>Spirit Spray Car Perfume</p>
+                </div>
+              </a>
+              <a href="/products?category=3">
+                <div className="item">
+                  <img src="/images/collection/product2.png" alt="Related" />
+                  <p>Silver Spray Body Perfume</p>
+                </div>
+              </a>
             </div>
           ) : (
             <div className="recommendations-2">

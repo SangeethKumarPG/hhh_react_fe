@@ -37,7 +37,7 @@ const Hero = () => {
   const { items, loading } = useSelector((state) => state.hero);
 
   useEffect(() => {
-    console.log("jaamm", items);
+    // console.log("jaamm", items);
   }, [items]);
 
   useEffect(() => {

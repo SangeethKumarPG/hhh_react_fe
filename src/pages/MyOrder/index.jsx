@@ -36,7 +36,7 @@ const OrderTracking = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("neee order", items);
+    // console.log("neee order", items);
   }, [items]);
 
   return (
@@ -76,7 +76,7 @@ const OrderTracking = () => {
               <p>
                 <b>Product List : </b>
                 {i.items.map((item, idx) => {
-                  return <>{item.product_name}</>;
+                  return <>{item.product_name} , </>;
                 })}
               </p>
               <p>
