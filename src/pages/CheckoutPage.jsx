@@ -37,7 +37,7 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     dispatch(fetchCart());
-    console.log("my quantity", items);
+    // console.log("my quantity", items);
   }, [dispatch]);
 
   const subtotal = items.reduce(
