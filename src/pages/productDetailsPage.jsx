@@ -240,6 +240,7 @@ const ProductDetailsPage = () => {
                     src="/src/assets/images/categories/car1.jpg"
                     alt="Related"
                   />
+
                   <p>Lav Crystal Car Perfume</p>
                 </div>
               </a>
@@ -249,6 +250,7 @@ const ProductDetailsPage = () => {
                     src="/src/assets/images/categories/car4.jpg"
                     alt="Related"
                   />
+
                   <p>Sevenstar Spray Body Perfume</p>
                 </div>
               </a>
@@ -258,6 +260,7 @@ const ProductDetailsPage = () => {
                     src="/src/assets/images/categories/car3.jpg"
                     alt="Related"
                   />
+
                   <p>Jasmin Spray Car Perfume</p>
                 </div>
               </a>
@@ -267,6 +270,7 @@ const ProductDetailsPage = () => {
                     src="/src/assets/images/categories/car2.jpg"
                     alt="Related"
                   />
+
                   <p>Rouger Spray Body Perfume</p>
                 </div>
               </a>
